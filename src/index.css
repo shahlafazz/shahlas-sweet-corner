@@ -1,13 +1,234 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Caveat:wght@400;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --beige:       #F5E6C8;
+  --parchment:   #C8A97E;
+  --dark-brown:  #5C3D2E;
+  --cream:       #FDF6E3;
+  --rose:        #E8B4B8;
+  --sage:        #9CAF88;
+  --deep-brown:  #3D1F0F;
+  --gold:        #D4A520;
+
+  /* wood panel palette */
+  --wood-light:  #E8C87A;   /* top highlight of frame */
+  --wood-mid:    #C8965A;   /* main wood colour */
+  --wood-dark:   #9B6B3A;   /* bottom shadow of frame */
+  --wood-line:   #F0DCA0;   /* inner highlight line */
+  --checker-a:   #F5E6C8;   /* checker tile A */
+  --checker-b:   #E8D09A;   /* checker tile B */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'VT323', monospace;
+  background-color: var(--beige);
+  color: var(--dark-brown);
+  font-size: 18px;
+  overflow-x: hidden;
 }
+
+/* ─── WOOD PANEL ──────────────────────────────────────────────── */
+/* Outer wrapper: the wood frame itself */
+.wood-panel {
+  position: relative;
+  /* wood gradient frame */
+  background: linear-gradient(180deg,
+    var(--wood-light) 0%,
+    var(--wood-mid)   40%,
+    var(--wood-dark)  100%
+  );
+  border: 3px solid var(--dark-brown);
+  /* layered shadow: inset highlight + drop */
+  box-shadow:
+    inset 0 2px 0 var(--wood-line),
+    inset 0 -2px 0 rgba(0,0,0,0.25),
+    inset 2px 0 0 rgba(255,255,255,0.15),
+    inset -2px 0 0 rgba(0,0,0,0.15),
+    4px 4px 0 var(--deep-brown);
+  padding: 8px;           /* frame thickness */
+}
+
+/* Corner peg details */
+.wood-panel::before,
+.wood-panel::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--wood-dark);
+  border: 2px solid var(--dark-brown);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2);
+  z-index: 2;
+}
+.wood-panel::before { top: -1px; left: -1px; }
+.wood-panel::after  { bottom: -1px; right: -1px; }
+
+/* Extra corners via a child pseudo — handled in WoodPanel component instead */
+
+/* Inner content area: checker */
+.wood-panel-inner {
+  position: relative;
+  background-color: var(--checker-b);
+  background-image:
+    linear-gradient(45deg, var(--checker-a) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--checker-a) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--checker-a) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--checker-a) 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+  border: 2px solid var(--dark-brown);
+  /* inner highlight line */
+  box-shadow:
+    inset 0 0 0 2px var(--wood-line),
+    inset 0 0 0 4px rgba(0,0,0,0.08);
+  padding: 20px;
+  z-index: 1;
+}
+
+/* ─── WOOD BUTTON ─────────────────────────────────────────────── */
+.wood-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: #FFF8E8;
+  text-shadow: 1px 1px 0 var(--dark-brown), 2px 2px 0 var(--deep-brown);
+  background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood-mid) 45%, var(--wood-dark) 100%);
+  border: 3px solid var(--dark-brown);
+  padding: 10px 22px;
+  cursor: pointer;
+  box-shadow:
+    inset 0 2px 0 var(--wood-line),
+    inset 0 -2px 0 rgba(0,0,0,0.2),
+    4px 4px 0 var(--deep-brown);
+  line-height: 1.8;
+  letter-spacing: 1px;
+  display: inline-block;
+  transition: transform 0.05s, box-shadow 0.05s;
+  position: relative;
+}
+.wood-btn::before,
+.wood-btn::after {
+  content: '';
+  position: absolute;
+  width: 7px; height: 7px;
+  background: var(--wood-dark);
+  border: 1px solid var(--dark-brown);
+}
+.wood-btn::before { top: -1px; left: -1px; }
+.wood-btn::after  { bottom: -1px; right: -1px; }
+.wood-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow:
+    inset 0 2px 0 var(--wood-line),
+    inset 0 -2px 0 rgba(0,0,0,0.2),
+    5px 5px 0 var(--deep-brown);
+  background: linear-gradient(180deg, #F0D890 0%, var(--wood-light) 45%, var(--wood-mid) 100%);
+}
+.wood-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow:
+    inset 0 2px 0 var(--wood-line),
+    inset 0 -2px 0 rgba(0,0,0,0.2),
+    1px 1px 0 var(--deep-brown);
+}
+
+/* secondary/back button — slightly darker wood */
+.wood-btn-secondary {
+  background: linear-gradient(180deg, var(--wood-mid) 0%, var(--wood-dark) 100%);
+  color: #FFF0D8;
+}
+.wood-btn-secondary:hover {
+  background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood-mid) 100%);
+}
+
+/* rose tint for "Send with Love" */
+.wood-btn-rose {
+  background: linear-gradient(180deg, #F0C0C0 0%, #C89090 45%, #A06060 100%);
+  color: #FFF0F0;
+}
+.wood-btn-rose:hover {
+  background: linear-gradient(180deg, #F8D0D0 0%, #D0A0A0 100%);
+}
+
+/* menu-card styles are now inline in MenuScreen.js */
+
+/* ─── LEGACY pixel-btn kept for any missed spots ──────────────── */
+.pixel-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood-mid) 45%, var(--wood-dark) 100%);
+  color: #FFF8E8;
+  text-shadow: 1px 1px 0 var(--dark-brown);
+  border: 3px solid var(--dark-brown);
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: inset 0 2px 0 var(--wood-line), 4px 4px 0 var(--deep-brown);
+  letter-spacing: 1px;
+  transition: transform 0.05s, box-shadow 0.05s;
+  line-height: 1.8;
+  display: inline-block;
+}
+.pixel-btn:hover { transform: translate(-1px,-1px); box-shadow: inset 0 2px 0 var(--wood-line), 5px 5px 0 var(--deep-brown); }
+.pixel-btn:active { transform: translate(3px,3px); box-shadow: inset 0 2px 0 var(--wood-line), 1px 1px 0 var(--deep-brown); }
+.pixel-btn-gold { background: linear-gradient(180deg,#F0D870 0%,#C8A040 45%,#9B7820 100%); }
+.pixel-btn-rose { background: linear-gradient(180deg,#F0C0C0 0%,#C89090 45%,#A06060 100%); color:#FFF0F0; }
+
+/* ─── EMAIL INPUT PLACEHOLDER ────────────────────────────────── */
+.send-email-input::placeholder { color: rgba(92,48,32,0.28); }
+
+/* ─── NOTE TEXTAREA ──────────────────────────────────────────── */
+.note-textarea::placeholder { color: rgba(140,90,70,0.38); font-style: italic; font-family: 'Caveat', cursive; font-size: 20px; }
+
+/* ─── SCROLLBAR ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--beige); border-left: 2px solid var(--dark-brown); }
+::-webkit-scrollbar-thumb { background: var(--wood-mid); border: 1px solid var(--dark-brown); }
+
+/* ─── ANIMATIONS ──────────────────────────────────────────────── */
+@keyframes float       { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes stamp       { 0%{transform:scale(3) rotate(-15deg);opacity:0} 60%{transform:scale(0.9) rotate(2deg);opacity:1} 80%{transform:scale(1.05) rotate(-1deg)} 100%{transform:scale(1) rotate(0deg);opacity:1} }
+@keyframes coin-fall   { 0%{transform:translateY(-40px) rotate(0deg);opacity:1} 100%{transform:translateY(60px) rotate(360deg);opacity:0} }
+@keyframes victory-flash { 0%,100%{background:#D4A520} 50%{background:#F9E04B} }
+@keyframes fade-in     { 0%{opacity:0;transform:translateY(10px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes flicker     { 0%,100%{opacity:1} 50%{opacity:0.88} }
+@keyframes receiptLine { 0%{opacity:0;transform:translateY(7px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes receiptFloat{ 0%,100%{transform:rotate(-0.5deg) translateY(0px)} 50%{transform:rotate(-0.5deg) translateY(-5px)} }
+@keyframes tileSelect  { 0%{transform:scale(1)} 35%{transform:scale(0.87)} 65%{transform:scale(1.09)} 100%{transform:scale(1)} }
+@keyframes heartPop    { 0%{transform:scale(0) rotate(-15deg);opacity:0} 60%{transform:scale(1.3) rotate(5deg);opacity:1} 100%{transform:scale(1) rotate(0deg);opacity:1} }
+@keyframes sparkle     { 0%,100%{opacity:0.4;transform:scale(1) rotate(0deg)} 50%{opacity:1;transform:scale(1.2) rotate(20deg)} }
+
+/* ── PayScreen spark burst (8 directions) ── */
+@keyframes spark0{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(0px,-92px) scale(1.15);opacity:0}}
+@keyframes spark1{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(65px,-65px) scale(1.15);opacity:0}}
+@keyframes spark2{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(92px,0px) scale(1.15);opacity:0}}
+@keyframes spark3{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(65px,65px) scale(1.15);opacity:0}}
+@keyframes spark4{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(0px,92px) scale(1.15);opacity:0}}
+@keyframes spark5{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(-65px,65px) scale(1.15);opacity:0}}
+@keyframes spark6{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(-92px,0px) scale(1.15);opacity:0}}
+@keyframes spark7{0%{transform:translate(0,0) scale(0);opacity:1}55%{opacity:1}100%{transform:translate(-65px,-65px) scale(1.15);opacity:0}}
+
+/* ── Floating stars rising from bottom ── */
+@keyframes floatStar{0%{transform:translateY(0) rotate(0deg);opacity:0}8%{opacity:0.9}75%{opacity:0.7}100%{transform:translateY(-230px) rotate(28deg);opacity:0}}
+
+/* ── Phase 4 fade overlay ── */
+@keyframes screenFadeIn{0%{opacity:0}100%{opacity:1}}
+
+/* ── Confetti ── */
+@keyframes confettiFall1 { 0%{transform:translateY(-50px) rotate(0deg);opacity:1} 100%{transform:translateY(112vh) rotate(560deg);opacity:0.75} }
+@keyframes confettiFall2 { 0%{transform:translateY(-50px) rotate(0deg);opacity:1} 100%{transform:translateY(112vh) rotate(-420deg);opacity:0.75} }
+@keyframes confettiFall3 { 0%{transform:translateY(-50px) translateX(0px) rotate(0deg);opacity:1} 30%{transform:translateY(30vh) translateX(22px) rotate(160deg)} 70%{transform:translateY(70vh) translateX(-18px) rotate(380deg)} 100%{transform:translateY(112vh) translateX(8px) rotate(540deg);opacity:0.75} }
+@keyframes letterReveal  { 0%{opacity:0;transform:translateY(10px)} 100%{opacity:1;transform:translateY(0)} }
+
+/* ── Wrapping sequence ── */
+@keyframes boxSlideUp   { 0%{transform:translateY(90px);opacity:0} 55%{opacity:1} 100%{transform:translateY(0);opacity:1} }
+@keyframes itemDrop     { 0%{transform:translateY(-80px);opacity:0} 62%{transform:translateY(6px);opacity:1} 80%{transform:translateY(-2px)} 100%{transform:translateY(0);opacity:1} }
+@keyframes tissuePopL   { 0%{transform:translateY(38px) rotate(-10deg);opacity:0} 100%{transform:translateY(0) rotate(-10deg);opacity:1} }
+@keyframes tissuePopC   { 0%{transform:translateY(32px);opacity:0} 100%{transform:translateY(0);opacity:1} }
+@keyframes tissuePopR   { 0%{transform:translateY(36px) rotate(9deg);opacity:0} 100%{transform:translateY(0) rotate(9deg);opacity:1} }
+@keyframes ribbonDrawH  { 0%{transform:scaleX(0);opacity:1} 100%{transform:scaleX(1);opacity:1} }
+@keyframes ribbonDrawV  { 0%{transform:scaleY(0);opacity:1} 100%{transform:scaleY(1);opacity:1} }
+@keyframes bowPop       { 0%{transform:scale(0) rotate(-22deg);opacity:0} 58%{transform:scale(1.18) rotate(7deg);opacity:1} 78%{transform:scale(0.9) rotate(-3deg)} 100%{transform:scale(1) rotate(0deg);opacity:1} }
+@keyframes wrapTextIn   { 0%{opacity:0;transform:translateY(14px)} 100%{opacity:1;transform:translateY(0)} }
