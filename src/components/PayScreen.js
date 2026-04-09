@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import kitchenImg   from '../assets/kitchen.jpeg';
+import readyImg     from '../assets/ready.jpeg';
 import bakingGif    from '../assets/baking.gif';
-import yourOrderGif from '../assets/yourorder.gif';
+import treatsGif    from '../assets/treats.gif';
 
 /* ─── Letter-by-letter text ───────────────────────────────────── */
 function TypedText({ text, delayStart = 0, charDelay = 0.055, style }) {
@@ -60,13 +61,13 @@ export default function PayScreen({ onComplete }) {
       justifyContent: 'center',
       padding: '24px 16px',
       gap: 28,
-      backgroundImage: `url(${kitchenImg})`,
+      backgroundImage: `url(${phase === 1 ? kitchenImg : readyImg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>
 
       {/* Dark overlay */}
-      <div style={{ position:'absolute', inset:0, background:'rgba(15,6,2,0.52)', pointerEvents:'none' }} />
+      <div style={{ position:'absolute', inset:0, background:'rgba(15,6,2,0.28)', pointerEvents:'none' }} />
 
       {/* Content */}
       <div style={{
@@ -80,7 +81,7 @@ export default function PayScreen({ onComplete }) {
       }}>
 
         <img
-          src={phase === 1 ? bakingGif : yourOrderGif}
+          src={phase === 1 ? bakingGif : treatsGif}
           alt={phase === 1 ? 'baking' : 'your order'}
           style={{
             width: 'min(560px, 88vw)',

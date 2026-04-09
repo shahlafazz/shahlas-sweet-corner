@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './index.css';
 import './App.css';
 import LandingScreen from './components/LandingScreen';
@@ -13,6 +13,8 @@ function App() {
   const [whiteIn, setWhiteIn]             = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const [personalNote, setPersonalNote]   = useState('');
+  const [toName, setToName]               = useState('');
+  const [fromName, setFromName]           = useState('');
 
   /* Instant step change — no fade */
   const goToStep = (n) => setStep(n);
@@ -22,6 +24,14 @@ function App() {
     setWhiteIn(true);
     setTimeout(() => setStep(n), 440);
     setTimeout(() => setWhiteIn(false), 500);
+  };
+
+  const startOver = () => {
+    setSelectedItems([]);
+    setPersonalNote('');
+    setToName('');
+    setFromName('');
+    goToStepWithFade(0);
   };
 
   const toggleItem = (item) => {
@@ -50,7 +60,10 @@ function App() {
           <NoteScreen
             note={personalNote}
             onNoteChange={setPersonalNote}
-            selectedItems={selectedItems}
+            toName={toName}
+            onToNameChange={setToName}
+            fromName={fromName}
+            onFromNameChange={setFromName}
             onNext={() => goToStep(3)}
             onBack={() => goToStep(1)}
           />
@@ -75,7 +88,9 @@ function App() {
           <SendScreen
             selectedItems={selectedItems}
             personalNote={personalNote}
-            onBack={() => goToStep(0)}
+            toName={toName}
+            fromName={fromName}
+            onBack={startOver}
             onAddMore={() => goToStep(1)}
           />
         )}

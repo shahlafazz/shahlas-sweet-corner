@@ -65,7 +65,7 @@ function CardBow() {
   );
 }
 
-export default function NoteScreen({ note, onNoteChange, onNext, onBack }) {
+export default function NoteScreen({ note, onNoteChange, toName, onToNameChange, fromName, onFromNameChange, onNext, onBack }) {
   const remaining = MAX_CHARS - note.length;
   const [focused, setFocused] = useState(false);
 
@@ -162,6 +162,32 @@ export default function NoteScreen({ note, onNoteChange, onNext, onBack }) {
               </span>
             </div>
 
+            {/* Dear line — top left */}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
+              <span style={{ fontFamily: 'Caveat, cursive', fontSize: 21, color: '#3E1E0E', whiteSpace: 'nowrap' }}>
+                Dear
+              </span>
+              <input
+                type="text"
+                value={toName}
+                onChange={e => onToNameChange(e.target.value)}
+                placeholder=""
+                style={{
+                  flex: 1,
+                  background: 'transparent',
+                  border: 'none',
+                  borderBottom: '1.5px dashed rgba(200,150,160,0.35)',
+                  fontFamily: 'Caveat, cursive',
+                  fontSize: 21,
+                  color: '#3E1E0E',
+                  outline: 'none',
+                  padding: '2px 4px',
+                  caretColor: '#C04870',
+                }}
+              />
+              <span style={{ fontFamily: 'Caveat, cursive', fontSize: 21, color: '#3E1E0E' }}>,</span>
+            </div>
+
             {/* Textarea */}
             <textarea
               className="note-textarea"
@@ -186,6 +212,31 @@ export default function NoteScreen({ note, onNoteChange, onNext, onBack }) {
                 caretColor: '#C04870',
               }}
             />
+
+            {/* Sincerely line — bottom right */}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 10, justifyContent: 'flex-end' }}>
+              <span style={{ fontFamily: 'Caveat, cursive', fontSize: 21, color: '#3E1E0E', whiteSpace: 'nowrap' }}>
+                Sincerely,
+              </span>
+              <input
+                type="text"
+                value={fromName}
+                onChange={e => onFromNameChange(e.target.value)}
+                placeholder=""
+                style={{
+                  width: 140,
+                  background: 'transparent',
+                  border: 'none',
+                  borderBottom: '1.5px dashed rgba(200,150,160,0.35)',
+                  fontFamily: 'Caveat, cursive',
+                  fontSize: 21,
+                  color: '#3E1E0E',
+                  outline: 'none',
+                  padding: '2px 4px',
+                  caretColor: '#C04870',
+                }}
+              />
+            </div>
 
             {/* Character count + small hearts row */}
             <div style={{

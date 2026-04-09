@@ -135,7 +135,7 @@ function ThumbnailGrid({ items }) {
   );
 }
 
-export default function SendScreen({ selectedItems, personalNote, onBack, onAddMore }) {
+export default function SendScreen({ selectedItems, personalNote, toName, fromName, onBack, onAddMore }) {
   const [email, setEmail]   = useState('');
   const [status, setStatus] = useState('idle');
   const [errorMsg, setError] = useState('');
@@ -144,21 +144,49 @@ export default function SendScreen({ selectedItems, personalNote, onBack, onAddM
     if (!email || !email.includes('@')) { setError('Please enter a valid email address.'); return; }
     setError(''); setStatus('sending');
 
-    const itemParams = {};
-    selectedItems.forEach((item, i) => {
-      itemParams[`item_${i+1}_name`]  = item.name;
-      itemParams[`item_${i+1}_image`] = item.imageUrl || '';
-    });
-    for (let i = selectedItems.length + 1; i <= 35; i++) {
-      itemParams[`item_${i}_name`] = ''; itemParams[`item_${i}_image`] = '';
+    const COLS = 4;
+    const CARD_W = 120;
+
+    const cardCell = (item) => `
+      <td style="text-align:center; padding:4px; width:${CARD_W}px; vertical-align:top;">
+        <img src="${item.imageUrl}" alt="${item.name}" width="80" height="80"
+          style="display:block; margin:0 auto; object-fit:contain; image-rendering:pixelated;" />
+        <p style="font-family:'Courier New',monospace; font-size:11px; color:#5C3D2E; margin:8px 0 0; line-height:1.4; text-align:center; width:${CARD_W}px;">
+          ${item.name}
+        </p>
+      </td>
+    `;
+
+    let itemsHtml;
+    if (selectedItems.length <= 4) {
+      // Centered row, cards fixed width so they don't stretch
+      itemsHtml = `
+        <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
+          <tr>${selectedItems.map(cardCell).join('')}</tr>
+        </table>
+      `;
+    } else {
+      // Multiple rows of 4
+      const rows = [];
+      for (let i = 0; i < selectedItems.length; i += COLS) {
+        rows.push(selectedItems.slice(i, i + COLS));
+      }
+      itemsHtml = `
+        <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
+          ${rows.map(row => `
+            <tr>${row.map(cardCell).join('')}</tr>
+          `).join('')}
+        </table>
+      `;
     }
+
     try {
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
         to_email: email,
         personal_note: personalNote || '(No note included)',
-        from_name: "Shahla's Sweet Corner",
-        item_list: selectedItems.map(i => i.name).join(', '),
-        ...itemParams,
+        to_name: toName || '',
+        from_name: fromName || '',
+        items_html: itemsHtml,
       }, PUBLIC_KEY);
       setStatus('success');
     } catch (err) {
