@@ -44,7 +44,7 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: compact ? '6px 4px 6px' : '12px 8px 10px',
+        padding: compact ? '6px 4px 6px' : '8px 6px 8px',
         cursor: locked ? 'not-allowed' : 'pointer',
         userSelect: 'none',
         opacity: locked ? 0.38 : 1,
@@ -184,7 +184,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   const COLS        = 3;
   const ROWS        = isMobile ? 3 : 4;
   const perPage     = COLS * ROWS;
-  const imgSize     = isMobile ? 46 : 76;
+  const imgSize     = isMobile ? 46 : 58;
 
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
@@ -207,7 +207,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
       backgroundSize: 'cover', backgroundPosition: 'center',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      padding: '32px 16px',
+      padding: isMobile ? '16px 10px' : '16px 16px',
     }}>
       {/* Overlay */}
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.16)', zIndex: 0, pointerEvents: 'none' }} />
@@ -330,7 +330,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   marginBottom: row < ROWS - 1 ? 4 : 0,
                 }}>
                   {padded.slice(row * COLS, row * COLS + COLS).map((item, col) => (
-                    <div key={col} style={{ minHeight: isMobile ? 100 : 120 }}>
+                    <div key={col} style={{ minHeight: isMobile ? 100 : 100 }}>
                       {item ? (
                         <MenuItem
                           item={item}
@@ -342,7 +342,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                           compact={isMobile}
                         />
                       ) : (
-                        <div style={{ height: isMobile ? 100 : 120 }} />
+                        <div style={{ height: 100 }} />
                       )}
                     </div>
                   ))}
