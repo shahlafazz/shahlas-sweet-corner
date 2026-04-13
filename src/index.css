@@ -185,6 +185,13 @@ html, body {
 /* ─── NOTE TEXTAREA ──────────────────────────────────────────── */
 .note-textarea::placeholder { color: rgba(140,90,70,0.38); font-style: italic; font-family: 'Caveat', cursive; font-size: 20px; }
 
+/* ─── MOBILE SCALE ───────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .app-root {
+    zoom: 0.82;
+  }
+}
+
 /* ─── SCROLLBAR ───────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--beige); border-left: 2px solid var(--dark-brown); }

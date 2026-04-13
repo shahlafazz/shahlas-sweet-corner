@@ -222,7 +222,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
         position: 'relative', zIndex: 1,
         width: '100%', maxWidth: 880,
         display: 'flex', gap: 20, alignItems: 'flex-start',
-        zoom: isMobile ? 1 : 0.85,
+        zoom: isMobile ? 'unset' : 0.85,
       }}>
 
         {/* ── Display Board ── */}
@@ -337,7 +337,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   marginBottom: row < ROWS - 1 ? 4 : 0,
                 }}>
                   {padded.slice(row * COLS, row * COLS + COLS).map((item, col) => (
-                    <div key={col} style={{ height: cellHeight }}>
+                    <div key={col} style={{ height: cellHeight, overflow: 'hidden' }}>
                       {item ? (
                         <MenuItem
                           item={item}
@@ -431,29 +431,31 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
       </div>
 
 {/* Back button */}
-      <div style={{ position: 'relative', zIndex: 1, marginTop: 16, zoom: isMobile ? 1 : 0.85 }}>
-        <button
-          onClick={onBack}
-          style={{
-            fontFamily: "'Press Start 2P', monospace",
-            fontSize: 7,
-            background: 'linear-gradient(180deg, #FFFAF4 0%, #F5EAD0 50%, #E8D5B5 100%)',
-            color: '#5C3020',
-            border: '2px solid #C8A870',
-            borderRadius: 24,
-            padding: '10px 24px',
-            cursor: 'pointer',
-            letterSpacing: 0.5, lineHeight: 1.8,
-            boxShadow: '0 4px 0 #A08848, 0 5px 12px rgba(90,55,15,0.16), inset 0 1px 0 rgba(255,255,255,0.7)',
-            transition: 'transform 0.15s ease, box-shadow 0.15s ease',
-          }}
-          onMouseDown={e => { e.currentTarget.style.transform = 'translateY(3px)'; e.currentTarget.style.boxShadow = '0 1px 0 #A08848, inset 0 1px 0 rgba(255,255,255,0.7)'; }}
-          onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
-        >
-          ◀ BACK
-        </button>
-      </div>
+      {!isMobile && (
+        <div style={{ position: 'relative', zIndex: 1, marginTop: 16, zoom: 0.85 }}>
+          <button
+            onClick={onBack}
+            style={{
+              fontFamily: "'Press Start 2P', monospace",
+              fontSize: 7,
+              background: 'linear-gradient(180deg, #FFFAF4 0%, #F5EAD0 50%, #E8D5B5 100%)',
+              color: '#5C3020',
+              border: '2px solid #C8A870',
+              borderRadius: 24,
+              padding: '10px 24px',
+              cursor: 'pointer',
+              letterSpacing: 0.5, lineHeight: 1.8,
+              boxShadow: '0 4px 0 #A08848, 0 5px 12px rgba(90,55,15,0.16), inset 0 1px 0 rgba(255,255,255,0.7)',
+              transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+            }}
+            onMouseDown={e => { e.currentTarget.style.transform = 'translateY(3px)'; e.currentTarget.style.boxShadow = '0 1px 0 #A08848, inset 0 1px 0 rgba(255,255,255,0.7)'; }}
+            onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
+          >
+            ◀ BACK
+          </button>
+        </div>
+      )}
     </div>
   );
 }
