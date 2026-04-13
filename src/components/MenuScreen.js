@@ -40,12 +40,11 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
       onMouseEnter={() => !locked && setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        position: 'relative',
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        height: cellHeight,
-        maxHeight: cellHeight,
         overflow: 'hidden',
         boxSizing: 'border-box',
         padding: compact ? '6px 4px 6px' : '8px 6px 8px',
@@ -344,7 +343,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
               overflow: 'hidden',
             }}>
               {padded.map((item, idx) => (
-                <div key={idx} style={{ overflow: 'hidden', minHeight: 0 }}>
+                <div key={idx} style={{ position: 'relative', height: cellHeight, overflow: 'hidden', minHeight: 0 }}>
                   {item ? (
                     <MenuItem
                       item={item}
