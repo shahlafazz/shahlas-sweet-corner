@@ -189,7 +189,8 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   const COLS        = 3;
   const ROWS        = isMobile ? 3 : 4;
   const perPage     = COLS * ROWS;
-  const imgSize     = isMobile ? 46 : 76;
+  const imgSize     = isMobile ? 38 : 76;
+  const cellHeight  = isMobile ? 88 : 120;
 
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
@@ -212,7 +213,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
       backgroundSize: 'cover', backgroundPosition: 'center',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      padding: isMobile ? '16px 10px' : '32px 16px',
+      padding: isMobile ? '8px 8px' : '32px 16px',
     }}>
       {/* Overlay */}
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.16)', zIndex: 0, pointerEvents: 'none' }} />
@@ -221,7 +222,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
         position: 'relative', zIndex: 1,
         width: '100%', maxWidth: 880,
         display: 'flex', gap: 20, alignItems: 'flex-start',
-        zoom: isMobile ? 0.75 : 0.85,
+        zoom: isMobile ? 1 : 0.85,
       }}>
 
         {/* ── Display Board ── */}
@@ -336,7 +337,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   marginBottom: row < ROWS - 1 ? 4 : 0,
                 }}>
                   {padded.slice(row * COLS, row * COLS + COLS).map((item, col) => (
-                    <div key={col} style={{ height: isMobile ? 110 : 120 }}>
+                    <div key={col} style={{ height: cellHeight }}>
                       {item ? (
                         <MenuItem
                           item={item}
@@ -348,7 +349,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                           compact={isMobile}
                         />
                       ) : (
-                        <div style={{ height: isMobile ? 110 : 120 }} />
+                        <div style={{ height: cellHeight }} />
                       )}
                     </div>
                   ))}
