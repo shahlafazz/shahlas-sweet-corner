@@ -95,12 +95,13 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         src={item.image}
         alt={item.name}
         style={{
-          width: imgSize,
-          height: imgSize,
+          width: compact && item.mobileImgSize ? item.mobileImgSize : imgSize,
+          height: compact && item.mobileImgSize ? item.mobileImgSize : imgSize,
           objectFit: 'contain',
           imageRendering: 'pixelated',
           display: 'block',
           marginBottom: 8,
+          marginTop: compact && item.mobileImagePadTop ? item.mobileImagePadTop : 0,
           filter: selected
             ? 'drop-shadow(0 0 5px rgba(220,80,110,0.5))'
             : hovered
