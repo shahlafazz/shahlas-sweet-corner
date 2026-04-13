@@ -13,11 +13,8 @@ function useWindowWidth() {
   return w;
 }
 
-/* tiny positional nudge per slot — avoids mechanical grid feel */
-const NUDGE_Y = [0, 1, -1, 0.5, -0.5, 1, 0, -1, 0.5, -0.5, 0.5, -0.5];
-
 /* ─── MenuItem tile ─────────────────────────────────────────── */
-function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, compact = false, cellHeight = 120 }) {
+function MenuItem({ item, selected, locked, onToggle, imgSize = 76, compact = false, cellHeight = 120 }) {
   const [hovered, setHovered] = useState(false);
   const [popping, setPopping] = useState(false);
 
@@ -27,8 +24,6 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
     setTimeout(() => setPopping(false), 180);
     onToggle(item);
   };
-
-  const nudge = NUDGE_Y[slotIdx % NUDGE_Y.length];
 
   let tileTransform = '';
   if (popping)      tileTransform = 'scale(0.97)';
@@ -347,7 +342,6 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                       selected={!!selectedItems.find(i => i.id === item.id)}
                       locked={isBoxFull && !selectedItems.find(i => i.id === item.id)}
                       onToggle={onToggleItem}
-                      slotIdx={idx}
                       imgSize={imgSize}
                       compact={isMobile}
                       cellHeight={cellHeight}
