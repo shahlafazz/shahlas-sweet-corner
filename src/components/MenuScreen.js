@@ -332,10 +332,11 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
               padding: isMobile ? '14px 10px 12px' : '10px 10px 4px',
               display: 'grid',
               gridTemplateColumns: `repeat(${COLS}, 1fr)`,
+              gridAutoRows: cellHeight,
               gap: isMobile ? 8 : 10,
             }}>
               {padded.map((item, idx) => (
-                <div key={idx} style={{ height: cellHeight, overflow: 'hidden' }}>
+                <div key={idx} style={{ overflow: 'hidden', minHeight: 0 }}>
                   {item ? (
                     <MenuItem
                       item={item}
@@ -346,9 +347,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                       imgSize={imgSize}
                       compact={isMobile}
                     />
-                  ) : (
-                    <div style={{ height: cellHeight }} />
-                  )}
+                  ) : null}
                 </div>
               ))}
             </div>
