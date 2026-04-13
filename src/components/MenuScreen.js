@@ -44,6 +44,8 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        height: '100%',
+        boxSizing: 'border-box',
         padding: compact ? '6px 4px 6px' : '8px 6px 8px',
         cursor: locked ? 'not-allowed' : 'pointer',
         userSelect: 'none',
@@ -114,9 +116,11 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         color: selected ? '#7A2840' : '#5C3D2E',
         lineHeight: 1.3,
         textAlign: 'center',
-        wordBreak: 'break-word',
-        maxWidth: '100%',
+        width: '100%',
         fontWeight: selected ? 'bold' : 'normal',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
       }}>
         {item.name}
       </div>
@@ -330,7 +334,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   marginBottom: row < ROWS - 1 ? 4 : 0,
                 }}>
                   {padded.slice(row * COLS, row * COLS + COLS).map((item, col) => (
-                    <div key={col} style={{ minHeight: isMobile ? 100 : 100 }}>
+                    <div key={col} style={{ height: isMobile ? 110 : 105 }}>
                       {item ? (
                         <MenuItem
                           item={item}
@@ -342,7 +346,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                           compact={isMobile}
                         />
                       ) : (
-                        <div style={{ height: 100 }} />
+                        <div style={{ height: isMobile ? 110 : 105 }} />
                       )}
                     </div>
                   ))}
