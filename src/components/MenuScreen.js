@@ -218,6 +218,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
         position: 'relative', zIndex: 1,
         width: '100%', maxWidth: 880,
         display: 'flex', gap: 20, alignItems: 'flex-start',
+        zoom: isMobile ? 1 : 0.85,
       }}>
 
         {/* ── Display Board ── */}
@@ -426,7 +427,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
       </div>
 
 {/* Back button */}
-      <div style={{ position: 'relative', zIndex: 1, marginTop: 16 }}>
+      <div style={{ position: 'relative', zIndex: 1, marginTop: 16, zoom: isMobile ? 1 : 0.85 }}>
         <button
           onClick={onBack}
           style={{
