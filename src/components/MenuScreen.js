@@ -122,8 +122,9 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         whiteSpace: compact ? 'nowrap' : 'normal',
         textOverflow: compact ? 'ellipsis' : 'clip',
         wordBreak: compact ? 'normal' : 'break-word',
+        marginTop: 'auto',
       }}>
-        {item.name}
+        {compact && item.mobileName ? item.mobileName : item.name}
       </div>
     </div>
   );
@@ -189,8 +190,8 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   const COLS        = 3;
   const ROWS        = isMobile ? 3 : 4;
   const perPage     = COLS * ROWS;
-  const imgSize     = isMobile ? 40 : 76;
-  const cellHeight  = isMobile ? 96 : 120;
+  const imgSize     = isMobile ? 50 : 76;
+  const cellHeight  = isMobile ? 100 : 120;
 
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
