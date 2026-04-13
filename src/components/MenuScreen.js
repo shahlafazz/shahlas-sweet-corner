@@ -17,7 +17,7 @@ function useWindowWidth() {
 const NUDGE_Y = [0, 1, -1, 0.5, -0.5, 1, 0, -1, 0.5, -0.5, 0.5, -0.5];
 
 /* ─── MenuItem tile ─────────────────────────────────────────── */
-function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76 }) {
+function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, compact = false }) {
   const [hovered, setHovered] = useState(false);
   const [popping, setPopping] = useState(false);
 
@@ -44,7 +44,7 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76 }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '12px 8px 10px',
+        padding: compact ? '6px 4px 6px' : '12px 8px 10px',
         cursor: locked ? 'not-allowed' : 'pointer',
         userSelect: 'none',
         opacity: locked ? 0.38 : 1,
@@ -110,7 +110,7 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76 }) {
       {/* Name */}
       <div style={{
         fontFamily: 'VT323, monospace',
-        fontSize: 15,
+        fontSize: compact ? 13 : 15,
         color: selected ? '#7A2840' : '#5C3D2E',
         lineHeight: 1.3,
         textAlign: 'center',
@@ -181,10 +181,10 @@ function TinyBow() {
 export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack, toName }) {
   const windowWidth = useWindowWidth();
   const isMobile    = windowWidth < 640;
-  const COLS        = isMobile ? 2 : 3;
+  const COLS        = 3;
   const ROWS        = isMobile ? 3 : 4;
   const perPage     = COLS * ROWS;
-  const imgSize     = isMobile ? 58 : 76;
+  const imgSize     = isMobile ? 46 : 76;
 
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
@@ -339,6 +339,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                           onToggle={onToggleItem}
                           slotIdx={row * COLS + col}
                           imgSize={imgSize}
+                          compact={isMobile}
                         />
                       ) : (
                         <div style={{ height: isMobile ? 100 : 120 }} />
