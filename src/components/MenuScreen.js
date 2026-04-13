@@ -112,7 +112,7 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
       {/* Name */}
       <div style={{
         fontFamily: 'VT323, monospace',
-        fontSize: compact ? 13 : 15,
+        fontSize: compact ? 15 : 15,
         color: selected ? '#7A2840' : '#5C3D2E',
         lineHeight: 1.25,
         textAlign: 'center',
@@ -189,8 +189,8 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   const COLS        = 3;
   const ROWS        = isMobile ? 3 : 4;
   const perPage     = COLS * ROWS;
-  const imgSize     = isMobile ? 38 : 76;
-  const cellHeight  = isMobile ? 88 : 120;
+  const imgSize     = isMobile ? 40 : 76;
+  const cellHeight  = isMobile ? 96 : 120;
 
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
@@ -213,7 +213,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
       backgroundSize: 'cover', backgroundPosition: 'center',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      padding: isMobile ? '8px 8px' : '32px 16px',
+      padding: isMobile ? '20px 24px' : '32px 16px',
     }}>
       {/* Overlay */}
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.16)', zIndex: 0, pointerEvents: 'none' }} />
@@ -328,7 +328,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
             </div>
 
             {/* ── Item grid (ROWS × COLS, responsive) ── */}
-            <div style={{ padding: '10px 10px 4px' }}>
+            <div style={{ padding: isMobile ? '14px 10px 12px' : '10px 10px 4px' }}>
               {Array.from({ length: ROWS }).map((_, row) => (
                 <div key={row} style={{
                   display: 'grid',
