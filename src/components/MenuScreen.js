@@ -17,7 +17,7 @@ function useWindowWidth() {
 const NUDGE_Y = [0, 1, -1, 0.5, -0.5, 1, 0, -1, 0.5, -0.5, 0.5, -0.5];
 
 /* ─── MenuItem tile ─────────────────────────────────────────── */
-function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, compact = false }) {
+function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, compact = false, cellHeight = 120 }) {
   const [hovered, setHovered] = useState(false);
   const [popping, setPopping] = useState(false);
 
@@ -44,7 +44,9 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        height: '100%',
+        height: cellHeight,
+        maxHeight: cellHeight,
+        overflow: 'hidden',
         boxSizing: 'border-box',
         padding: compact ? '6px 4px 6px' : '8px 6px 8px',
         cursor: locked ? 'not-allowed' : 'pointer',
@@ -347,6 +349,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                       slotIdx={idx}
                       imgSize={imgSize}
                       compact={isMobile}
+                      cellHeight={cellHeight}
                     />
                   ) : null}
                 </div>
