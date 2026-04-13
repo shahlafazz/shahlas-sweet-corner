@@ -114,13 +114,11 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         fontFamily: 'VT323, monospace',
         fontSize: compact ? 13 : 15,
         color: selected ? '#7A2840' : '#5C3D2E',
-        lineHeight: 1.3,
+        lineHeight: 1.25,
         textAlign: 'center',
-        width: '100%',
+        wordBreak: 'break-word',
+        maxWidth: '100%',
         fontWeight: selected ? 'bold' : 'normal',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
       }}>
         {item.name}
       </div>
@@ -188,7 +186,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   const COLS        = 3;
   const ROWS        = isMobile ? 3 : 4;
   const perPage     = COLS * ROWS;
-  const imgSize     = isMobile ? 46 : 58;
+  const imgSize     = isMobile ? 46 : 76;
 
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
@@ -211,7 +209,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
       backgroundSize: 'cover', backgroundPosition: 'center',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      padding: isMobile ? '16px 10px' : '16px 16px',
+      padding: isMobile ? '16px 10px' : '32px 16px',
     }}>
       {/* Overlay */}
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.16)', zIndex: 0, pointerEvents: 'none' }} />
@@ -334,7 +332,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   marginBottom: row < ROWS - 1 ? 4 : 0,
                 }}>
                   {padded.slice(row * COLS, row * COLS + COLS).map((item, col) => (
-                    <div key={col} style={{ height: isMobile ? 110 : 105 }}>
+                    <div key={col} style={{ height: isMobile ? 110 : 120 }}>
                       {item ? (
                         <MenuItem
                           item={item}
@@ -346,7 +344,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                           compact={isMobile}
                         />
                       ) : (
-                        <div style={{ height: isMobile ? 110 : 105 }} />
+                        <div style={{ height: isMobile ? 110 : 120 }} />
                       )}
                     </div>
                   ))}
