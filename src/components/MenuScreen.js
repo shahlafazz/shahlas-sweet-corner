@@ -30,9 +30,9 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
 
   const nudge = NUDGE_Y[slotIdx % NUDGE_Y.length];
 
-  let tileTransform = `translateY(${nudge}px)`;
-  if (popping)       tileTransform += ' scale(0.97)';
-  else if (hovered)  tileTransform += ' translateY(-1px) scale(1.01)';
+  let tileTransform = '';
+  if (popping)      tileTransform = 'scale(0.97)';
+  else if (hovered) tileTransform = 'translateY(-1px) scale(1.01)';
 
   return (
     <div
@@ -59,17 +59,13 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
             ? 'linear-gradient(180deg, #FFF8F0, #FFF0E4)'
             : '#FFF8F2',
         borderRadius: 14,
-        border: selected
-          ? '2px solid #F0A0BC'
-          : hovered
-            ? '2px solid rgba(220,165,140,0.7)'
-            : '2px solid rgba(220,165,140,0.35)',
+        border: 'none',
         boxShadow: selected
-          ? '0 4px 14px rgba(220,80,110,0.12), inset 0 1px 0 rgba(255,230,240,0.7)'
+          ? 'inset 0 0 0 2px #F0A0BC, 0 4px 14px rgba(220,80,110,0.12)'
           : hovered
-            ? '0 6px 18px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.7)'
-            : '0 2px 6px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.6)',
-        transform: locked ? `translateY(${NUDGE_Y[slotIdx % NUDGE_Y.length]}px)` : tileTransform,
+            ? 'inset 0 0 0 2px rgba(220,165,140,0.7), 0 6px 18px rgba(0,0,0,0.14)'
+            : 'inset 0 0 0 2px rgba(220,165,140,0.35), 0 2px 6px rgba(0,0,0,0.07)',
+        transform: tileTransform || undefined,
         transition: 'transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease, opacity 0.22s ease',
         margin: 0,
       }}
