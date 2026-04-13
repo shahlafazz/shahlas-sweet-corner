@@ -221,7 +221,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
         position: 'relative', zIndex: 1,
         width: '100%', maxWidth: 880,
         display: 'flex', gap: 20, alignItems: 'flex-start',
-        zoom: isMobile ? 0.82 : 0.85,
+        zoom: isMobile ? 0.75 : 0.85,
       }}>
 
         {/* ── Display Board ── */}

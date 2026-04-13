@@ -39,6 +39,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
         width: '100%', maxWidth: 520,
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', gap: 20,
+        zoom: window.innerWidth < 640 ? 0.82 : 1,
       }}>
 
         {/* ── Scene label ── */}

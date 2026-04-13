@@ -256,7 +256,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
     <div style={{ minHeight: '100vh', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px 16px', ...BG }}>
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.1)', zIndex: 0, pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: 520, width: '100%', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: 520, width: '100%', position: 'relative', zIndex: 1, zoom: window.innerWidth < 640 ? 0.82 : 1 }}>
         <div style={card}>
 
           {/* ── Header ── */}

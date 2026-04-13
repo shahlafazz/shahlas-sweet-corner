@@ -67,7 +67,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(24px)',
         transition: 'opacity 0.55s ease, transform 0.55s ease',
-        zoom: window.innerWidth >= 640 ? 0.85 : 1,
+        zoom: window.innerWidth >= 640 ? 0.85 : 0.82,
       }}>
 
         {/* Scene title above receipt */}
