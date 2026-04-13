@@ -55,18 +55,18 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
         filter: locked ? 'grayscale(0.4)' : 'none',
         /* tile background */
         background: selected
-          ? 'linear-gradient(180deg, #FFE0EA 0%, #FFD0E2 100%)'
+          ? 'linear-gradient(180deg, #FFF0F5 0%, #FFE4EF 100%)'
           : hovered
             ? 'linear-gradient(180deg, #FFF8F0, #FFF0E4)'
             : '#FFF8F2',
         borderRadius: 14,
         border: selected
-          ? '2px solid #E87090'
+          ? '2px solid #F0A0BC'
           : hovered
             ? '2px solid rgba(220,165,140,0.7)'
             : '2px solid rgba(220,165,140,0.35)',
         boxShadow: selected
-          ? '0 4px 14px rgba(220,80,110,0.20), inset 0 1px 0 rgba(255,220,232,0.5)'
+          ? '0 4px 14px rgba(220,80,110,0.12), inset 0 1px 0 rgba(255,230,240,0.7)'
           : hovered
             ? '0 6px 18px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.7)'
             : '0 2px 6px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.6)',
@@ -195,6 +195,8 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   const perPage     = COLS * ROWS;
   const imgSize     = isMobile ? 50 : 76;
   const cellHeight  = isMobile ? 100 : 120;
+  const gridGap     = isMobile ? 8 : 10;
+  const gridHeight  = ROWS * cellHeight + (ROWS - 1) * gridGap;
 
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
@@ -332,12 +334,14 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
             </div>
 
             {/* ── Item grid (ROWS × COLS, responsive) ── */}
+            <div style={{ padding: isMobile ? '14px 10px 12px' : '10px 10px 4px', overflow: 'hidden' }}>
             <div style={{
-              padding: isMobile ? '14px 10px 12px' : '10px 10px 4px',
               display: 'grid',
               gridTemplateColumns: `repeat(${COLS}, 1fr)`,
               gridAutoRows: cellHeight,
-              gap: isMobile ? 8 : 10,
+              gap: gridGap,
+              height: gridHeight,
+              overflow: 'hidden',
             }}>
               {padded.map((item, idx) => (
                 <div key={idx} style={{ overflow: 'hidden', minHeight: 0 }}>
@@ -355,6 +359,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   ) : null}
                 </div>
               ))}
+            </div>
             </div>
 
             {/* ── Pagination footer ── */}
