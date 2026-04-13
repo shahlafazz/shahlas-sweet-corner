@@ -33,25 +33,6 @@ const PAPER_GRAIN = {
   `,
 };
 
-/* Decorative barcode — deterministic varying bar widths */
-const BARS = [2,1,3,1,2,2,1,2,1,3,1,1,2,1,3,2,1,1,2,3,1,2,1,1,3,1,2,1,2,1,3,1,1,2,1,2,3,1,1,2];
-
-function Barcode() {
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: 0, padding: '0 32px', marginTop: 14 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-        {BARS.map((w, i) => (
-          <div key={i} style={{
-            width: w * 2,
-            height: i % 7 === 0 ? 32 : 24,
-            background: i % 2 === 0 ? '#3D2010' : 'transparent',
-            opacity: i % 2 === 0 ? 0.82 : 0,
-          }} />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function ReceiptScene({ selectedItems, onNext, onBack }) {
   const [visible, setVisible] = useState(false);
@@ -63,8 +44,6 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
 
   const total = selectedItems.reduce((sum, item) => sum + item.price, 0);
 
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
 
   return (
     <div style={{
@@ -132,9 +111,6 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
 
             {/* Header stamp block */}
             <div style={{ padding: '12px 28px 0', textAlign: 'center' }}>
-              {/* Bakery doodle */}
-              <div style={{ fontSize: 28, marginBottom: 6, lineHeight: 1 }}>🍰</div>
-
               <div style={{ display: 'inline-block', transform: 'rotate(-2.5deg)' }}>
                 <div style={{
                   fontFamily: "'Press Start 2P', monospace",
@@ -169,17 +145,6 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                 marginTop: 2,
               }}>
                 — a little something sweet —
-              </div>
-              {/* Date */}
-              <div style={{
-                fontFamily: "'Press Start 2P', monospace",
-                fontSize: 6,
-                color: '#C8A97E',
-                letterSpacing: 1.5,
-                marginTop: 8,
-                opacity: 0.75,
-              }}>
-                {dateStr}
               </div>
             </div>
 
@@ -335,8 +300,6 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                 ✦ &nbsp; thank you &nbsp; ✦
               </div>
 
-              {/* Barcode */}
-              <Barcode />
             </div>
 
           </div>
@@ -348,7 +311,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
           flexDirection: 'column',
           alignItems: 'center',
           gap: 14,
-          marginTop: 30,
+          marginTop: 16,
         }}>
           <button
             onClick={onNext}
