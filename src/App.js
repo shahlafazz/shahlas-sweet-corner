@@ -34,10 +34,13 @@ function App() {
     goToStepWithFade(0);
   };
 
+  const MAX_TREATS = 6;
+
   const toggleItem = (item) => {
     setSelectedItems(prev => {
       const exists = prev.find(i => i.id === item.id);
       if (exists) return prev.filter(i => i.id !== item.id);
+      if (prev.length >= MAX_TREATS) return prev;
       return [...prev, item];
     });
   };
@@ -45,7 +48,13 @@ function App() {
   return (
     <>
       <div className="app-root">
-        {step === 0 && <LandingScreen onEnter={() => goToStepWithFade(1)} />}
+        {step === 0 && (
+          <LandingScreen
+            onEnter={() => goToStepWithFade(1)}
+            toName={toName}
+            onToNameChange={setToName}
+          />
+        )}
 
         {step === 1 && (
           <MenuScreen
@@ -53,6 +62,7 @@ function App() {
             onToggleItem={toggleItem}
             onNext={() => goToStep(2)}
             onBack={() => goToStep(0)}
+            toName={toName}
           />
         )}
 

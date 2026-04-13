@@ -328,7 +328,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
             onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
           >
-            Place Order ▶
+            PLACE ORDER ▶
           </button>
           <button
             onClick={onBack}
@@ -349,7 +349,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
             onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
           >
-            ◀ Back
+            ◀ BACK
           </button>
         </div>
 

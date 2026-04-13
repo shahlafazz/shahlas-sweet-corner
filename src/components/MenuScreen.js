@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import menuItems from '../data/menuItems';
 import bakeryInterior from '../assets/bakery-interior.jpeg';
 
-const PER_PAGE = 12; // 4 × 3
+/* ─── Responsive hook ───────────────────────────────────────── */
+function useWindowWidth() {
+  const [w, setW] = useState(window.innerWidth);
+  useEffect(() => {
+    const h = () => setW(window.innerWidth);
+    window.addEventListener('resize', h);
+    return () => window.removeEventListener('resize', h);
+  }, []);
+  return w;
+}
 
 /* tiny positional nudge per slot — avoids mechanical grid feel */
 const NUDGE_Y = [0, 1, -1, 0.5, -0.5, 1, 0, -1, 0.5, -0.5, 0.5, -0.5];
 
 /* ─── MenuItem tile ─────────────────────────────────────────── */
-function MenuItem({ item, selected, onToggle, slotIdx }) {
+function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76 }) {
   const [hovered, setHovered] = useState(false);
   const [popping, setPopping] = useState(false);
 
   const handleClick = () => {
+    if (locked) return;
     setPopping(true);
     setTimeout(() => setPopping(false), 180);
     onToggle(item);
@@ -27,7 +37,7 @@ function MenuItem({ item, selected, onToggle, slotIdx }) {
   return (
     <div
       onClick={handleClick}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => !locked && setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         position: 'relative',
@@ -35,8 +45,10 @@ function MenuItem({ item, selected, onToggle, slotIdx }) {
         flexDirection: 'column',
         alignItems: 'center',
         padding: '12px 8px 10px',
-        cursor: 'pointer',
+        cursor: locked ? 'not-allowed' : 'pointer',
         userSelect: 'none',
+        opacity: locked ? 0.38 : 1,
+        filter: locked ? 'grayscale(0.4)' : 'none',
         /* tile background */
         background: selected
           ? 'linear-gradient(180deg, #FFE0EA 0%, #FFD0E2 100%)'
@@ -54,8 +66,8 @@ function MenuItem({ item, selected, onToggle, slotIdx }) {
           : hovered
             ? '0 6px 18px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.7)'
             : '0 2px 6px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.6)',
-        transform: tileTransform,
-        transition: 'transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease',
+        transform: locked ? `translateY(${NUDGE_Y[slotIdx % NUDGE_Y.length]}px)` : tileTransform,
+        transition: 'transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease, opacity 0.22s ease',
         margin: '2px',
       }}
     >
@@ -79,8 +91,8 @@ function MenuItem({ item, selected, onToggle, slotIdx }) {
         src={item.image}
         alt={item.name}
         style={{
-          width: 76,
-          height: 76,
+          width: imgSize,
+          height: imgSize,
           objectFit: 'contain',
           imageRendering: 'pixelated',
           display: 'block',
@@ -113,27 +125,44 @@ function MenuItem({ item, selected, onToggle, slotIdx }) {
 }
 
 /* ─── Pagination arrow ──────────────────────────────────────── */
-function PageArrow({ dir, onClick, disabled }) {
+function PageArrow({ dir, onClick, disabled, remainingCount }) {
+  const isNext = dir === 'next';
   return (
     <button
       onClick={onClick}
       disabled={disabled}
       style={{
-        width: 34, height: 34,
-        border: '2px solid rgba(220,165,180,0.6)',
-        borderRadius: 10,
-        background: disabled ? 'rgba(220,165,180,0.12)' : '#FFF8F2',
-        color: disabled ? 'rgba(200,140,160,0.5)' : '#C04870',
-        fontSize: 18,
+        height: 34,
+        padding: '0 14px',
+        border: `2px solid ${disabled ? 'rgba(220,165,180,0.25)' : 'rgba(220,120,155,0.65)'}`,
+        borderRadius: 20,
+        background: disabled ? 'rgba(220,165,180,0.08)' : 'linear-gradient(180deg, #FFF0F5, #FFE0EC)',
+        color: disabled ? 'rgba(200,140,160,0.4)' : '#C04870',
         cursor: disabled ? 'default' : 'pointer',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        boxShadow: disabled ? 'none' : '0 2px 0 rgba(180,80,110,0.18)',
+        display: 'flex', alignItems: 'center', gap: 5,
+        boxShadow: disabled ? 'none' : '0 2px 0 rgba(180,80,110,0.2), inset 0 1px 0 rgba(255,255,255,0.7)',
         transition: 'background 0.12s',
-        fontFamily: 'monospace',
-        lineHeight: 1, flexShrink: 0,
+        flexShrink: 0,
+        whiteSpace: 'nowrap',
       }}
+      onMouseEnter={e => { if (!disabled) e.currentTarget.style.background = 'linear-gradient(180deg, #FFE8F2, #FFD4E8)'; }}
+      onMouseLeave={e => { if (!disabled) e.currentTarget.style.background = 'linear-gradient(180deg, #FFF0F5, #FFE0EC)'; }}
     >
-      {dir === 'prev' ? '‹' : '›'}
+      {!isNext && (
+        <span style={{ fontFamily: 'monospace', fontSize: 12, lineHeight: 1, opacity: disabled ? 0.4 : 1 }}>←</span>
+      )}
+      <span style={{
+        fontFamily: "'Press Start 2P', monospace",
+        fontSize: 8,
+        lineHeight: 1,
+        letterSpacing: 1,
+        textShadow: disabled ? 'none' : '0 0 10px rgba(220,80,130,0.35), 0 0 3px rgba(220,80,130,0.2)',
+      }}>
+        {isNext ? 'NEXT' : 'BACK'}
+      </span>
+      {isNext && (
+        <span style={{ fontFamily: 'monospace', fontSize: 12, lineHeight: 1, opacity: disabled ? 0.4 : 1 }}>→</span>
+      )}
     </button>
   );
 }
@@ -149,14 +178,27 @@ function TinyBow() {
   );
 }
 
-export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack }) {
-  const [page, setPage] = useState(0);
-  const totalPages = Math.ceil(menuItems.length / PER_PAGE);
-  const pageItems  = menuItems.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
+export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack, toName }) {
+  const windowWidth = useWindowWidth();
+  const isMobile    = windowWidth < 640;
+  const COLS        = isMobile ? 2 : 3;
+  const ROWS        = isMobile ? 3 : 4;
+  const perPage     = COLS * ROWS;
+  const imgSize     = isMobile ? 58 : 76;
 
-  /* pad to 12 so grid keeps consistent height */
+  const [page, setPage] = useState(0);
+  useEffect(() => { setPage(0); }, [isMobile]);
+
+  const totalPages = Math.ceil(menuItems.length / perPage);
+  const pageItems  = menuItems.slice(page * perPage, (page + 1) * perPage);
+  const isBoxFull  = selectedItems.length >= 6;
+
+  /* remaining items on the next page */
+  const nextPageCount = menuItems.slice((page + 1) * perPage, (page + 2) * perPage).length;
+
+  /* pad to fill grid so it keeps consistent height */
   const padded = [...pageItems];
-  while (padded.length < PER_PAGE) padded.push(null);
+  while (padded.length < perPage) padded.push(null);
 
   return (
     <div style={{
@@ -236,59 +278,70 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   color: '#A03050',
                   textShadow: '1px 1px 0 rgba(255,200,215,0.7)',
                   lineHeight: 1.6,
-                }}>Pick Your Treats</span>
+                }}>
+                  {toName ? `for ${toName}` : 'Pick Your Treats'}
+                </span>
                 <TinyBow />
               </div>
 
-              {/* Right: badge + hint */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              {/* Right: badge + hint / whisper */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+                {/* Count badge */}
                 {selectedItems.length > 0 && (
                   <div style={{
-                    background: 'linear-gradient(135deg, #FF8FAD, #D04870)',
+                    background: isBoxFull
+                      ? 'linear-gradient(135deg, #F0A040, #D07010)'
+                      : 'linear-gradient(135deg, #FF8FAD, #D04870)',
                     color: '#FFF0F4',
-                    border: '2px solid rgba(180,40,70,0.4)',
+                    border: `2px solid ${isBoxFull ? 'rgba(160,80,10,0.4)' : 'rgba(180,40,70,0.4)'}`,
                     borderRadius: 20,
                     padding: '3px 10px',
                     fontFamily: "'Press Start 2P', monospace",
                     fontSize: 7,
-                    boxShadow: '0 2px 5px rgba(180,40,70,0.25)',
+                    boxShadow: '0 2px 5px rgba(0,0,0,0.18)',
                     display: 'flex', alignItems: 'center', gap: 5,
-                    animation: 'fade-in 0.25s ease',
+                    flexShrink: 0,
+                    transition: 'background 0.3s',
                   }}>
-                    ♥ {selectedItems.length}
+                    {isBoxFull ? '🎁' : '♥'} {selectedItems.length}/6
                   </div>
                 )}
+
                 <div style={{
                   fontFamily: 'Caveat, cursive',
-                  fontSize: 17,
-                  color: '#A06070',
+                  fontSize: 16,
+                  color: isBoxFull ? '#A06010' : '#A06070',
                   fontStyle: 'italic',
+                  whiteSpace: 'nowrap',
+                  transition: 'color 0.3s',
                 }}>
-                  Tap to choose
+                  {isBoxFull ? 'box is full! 🎁' : 'Tap to choose'}
                 </div>
               </div>
             </div>
 
-            {/* ── Item grid (4 × 3) ── */}
+            {/* ── Item grid (ROWS × COLS, responsive) ── */}
             <div style={{ padding: '10px 10px 4px' }}>
-              {[0, 1, 2, 3].map(row => (
+              {Array.from({ length: ROWS }).map((_, row) => (
                 <div key={row} style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: 8,
-                  marginBottom: row < 3 ? 4 : 0,
+                  gridTemplateColumns: `repeat(${COLS}, 1fr)`,
+                  gap: isMobile ? 6 : 8,
+                  marginBottom: row < ROWS - 1 ? 4 : 0,
                 }}>
-                  {padded.slice(row * 3, row * 3 + 3).map((item, col) => (
-                    <div key={col} style={{ minHeight: 120 }}>
+                  {padded.slice(row * COLS, row * COLS + COLS).map((item, col) => (
+                    <div key={col} style={{ minHeight: isMobile ? 100 : 120 }}>
                       {item ? (
                         <MenuItem
                           item={item}
                           selected={!!selectedItems.find(i => i.id === item.id)}
+                          locked={isBoxFull && !selectedItems.find(i => i.id === item.id)}
                           onToggle={onToggleItem}
-                          slotIdx={row * 3 + col}
+                          slotIdx={row * COLS + col}
+                          imgSize={imgSize}
                         />
                       ) : (
-                        <div style={{ height: 120 }} />
+                        <div style={{ height: isMobile ? 100 : 120 }} />
                       )}
                     </div>
                   ))}
@@ -304,7 +357,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
               justifyContent: 'space-between',
               background: 'rgba(255,232,240,0.45)',
             }}>
-              <PageArrow dir="prev" onClick={() => setPage(p => p - 1)} disabled={page === 0} />
+              <PageArrow dir="prev" onClick={() => setPage(p => p - 1)} disabled={page === 0} remainingCount={0} />
 
               {/* Page dots */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -327,7 +380,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                 ))}
               </div>
 
-              <PageArrow dir="next" onClick={() => setPage(p => p + 1)} disabled={page === totalPages - 1} />
+              <PageArrow dir="next" onClick={() => setPage(p => p + 1)} disabled={page === totalPages - 1 || isBoxFull} remainingCount={nextPageCount} />
             </div>
 
             {/* ── Write a Note CTA ── */}
@@ -358,18 +411,18 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                   onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
                   onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
                 >
-                  Write a Note ▶
+                  WRITE A NOTE ▶
                 </button>
               </div>
             )}
           </div>
         </div>
 
-        {/* ── Order Receipt (unchanged) ── */}
-        <OrderReceipt selectedItems={selectedItems} onToggle={onToggleItem} />
+        {/* ── Order Receipt (hidden on mobile) ── */}
+        {!isMobile && <OrderReceipt selectedItems={selectedItems} onToggle={onToggleItem} />}
       </div>
 
-      {/* Back button */}
+{/* Back button */}
       <div style={{ position: 'relative', zIndex: 1, marginTop: 16 }}>
         <button
           onClick={onBack}
@@ -390,7 +443,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
           onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
           onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
         >
-          ◀ Back
+          ◀ BACK
         </button>
       </div>
     </div>

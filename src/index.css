@@ -179,6 +179,9 @@ html, body {
 /* ─── EMAIL INPUT PLACEHOLDER ────────────────────────────────── */
 .send-email-input::placeholder { color: rgba(92,48,32,0.28); }
 
+/* ─── RECIPIENT NAME INPUT ───────────────────────────────────── */
+.recipient-input::placeholder { color: rgba(176,104,128,0.28); font-family: 'Caveat', cursive; font-size: 22px; }
+
 /* ─── NOTE TEXTAREA ──────────────────────────────────────────── */
 .note-textarea::placeholder { color: rgba(140,90,70,0.38); font-style: italic; font-family: 'Caveat', cursive; font-size: 20px; }
 

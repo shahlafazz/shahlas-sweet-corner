@@ -3,57 +3,6 @@ import bakeryInterior from '../assets/bakery-interior.jpeg';
 
 const MAX_CHARS = 200;
 
-/* ─── Decorative CSS pen ─────────────────────────────────────── */
-function DecorativePen() {
-  return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: 14,
-      filter: 'drop-shadow(2px 5px 7px rgba(0,0,0,0.22))',
-      flexShrink: 0,
-    }}>
-      {/* Eraser — blush pink */}
-      <div style={{
-        width: 14, height: 18,
-        background: 'linear-gradient(180deg, #F4B8C8, #E090A8)',
-        borderRadius: '5px 5px 1px 1px',
-        border: '1px solid rgba(200,80,120,0.28)',
-      }} />
-      {/* Metal ferrule */}
-      <div style={{
-        width: 14, height: 6,
-        background: 'linear-gradient(90deg, #C8CCD8 0%, #EAECF4 45%, #B8BCC8 100%)',
-        border: '1px solid rgba(160,164,180,0.45)',
-      }} />
-      {/* Body */}
-      <div style={{
-        width: 14, height: 68,
-        background: 'linear-gradient(90deg, #D4A840 0%, #F0C860 40%, #E0B040 70%, #C89030 100%)',
-        border: '1px solid rgba(150,110,20,0.25)',
-        position: 'relative',
-      }}>
-        {/* Faint centre stripe for depth */}
-        <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 1, background: 'rgba(255,255,255,0.18)' }} />
-      </div>
-      {/* Nib shoulder */}
-      <div style={{
-        width: 14, height: 10,
-        background: 'linear-gradient(180deg, #C89030, #9A6A10)',
-        clipPath: 'polygon(0 0, 100% 0, 70% 100%, 30% 100%)',
-      }} />
-      {/* Tip */}
-      <div style={{
-        width: 0, height: 0,
-        borderLeft: '7px solid transparent',
-        borderRight: '7px solid transparent',
-        borderTop: '16px solid #6A4010',
-      }} />
-    </div>
-  );
-}
-
 /* ─── Small bow for card header ──────────────────────────────── */
 function CardBow() {
   return (
@@ -268,16 +217,6 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
             </div>
           </div>
 
-          {/* ── Decorative pen — right side, angled ── */}
-          <div style={{
-            position: 'absolute',
-            right: -38,
-            top: '28%',
-            transform: 'rotate(-14deg)',
-            opacity: 0.92,
-          }}>
-            <DecorativePen />
-          </div>
         </div>
 
         {/* ── Actions ── */}
@@ -309,7 +248,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
             onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
           >
-            ◀ Back
+            ◀ BACK
           </button>
 
           <button
@@ -332,7 +271,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
             onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
           >
-            Next ▶
+            NEXT ▶
           </button>
         </div>
 

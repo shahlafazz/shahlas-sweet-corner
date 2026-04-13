@@ -397,7 +397,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
                 maxWidth: 280,
               }}
             >
-              {status === 'sending' ? '⏳ Sending...' : 'Seal & Send 💌'}
+              {status === 'sending' ? '⏳ SENDING...' : 'SEAL & SEND 💌'}
             </button>
           </div>
 
@@ -420,7 +420,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
               lineHeight: 1.8,
             }}
           >
-            ◀ Back
+            ◀ BACK
           </button>
         </div>
 

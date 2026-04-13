@@ -97,7 +97,8 @@ function Heart({ size = 15, style }) {
   );
 }
 
-export default function LandingScreen({ onEnter }) {
+
+export default function LandingScreen({ onEnter, toName, onToNameChange }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => { const t = setTimeout(() => setVisible(true), 120); return () => clearTimeout(t); }, []);
 
@@ -190,13 +191,61 @@ export default function LandingScreen({ onEnter }) {
               <p style={{
                 fontFamily: 'Caveat, cursive',
                 fontSize: 22,
-                color: '#9A4858',
-                marginBottom: 24,
+                color: '#C8849A',
+                marginBottom: 20,
                 fontStyle: 'italic',
-                lineHeight: 1.45,
+                lineHeight: 1.55,
               }}>
-                a little something sweet,<br />just for you 🌸
+                <span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginRight: 11 }}>♥</span>a sweet little gift, made with love<span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginLeft: 11 }}>♥</span>
               </p>
+
+              {/* Who is this for? */}
+              <div style={{ marginBottom: 22, width: '100%' }}>
+                <div style={{
+                  fontFamily: "'Press Start 2P', monospace",
+                  fontSize: 9,
+                  color: '#C0708A',
+                  letterSpacing: 1.5,
+                  lineHeight: 2,
+                  marginBottom: 10,
+                  textAlign: 'center',
+                  textTransform: 'uppercase',
+                }}>
+                  this is a gift for
+                </div>
+                <input
+                  type="text"
+                  value={toName}
+                  onChange={e => onToNameChange(e.target.value)}
+                  placeholder="their name"
+                  maxLength={32}
+                  className="recipient-input"
+                  style={{
+                    width: '100%',
+                    background: 'rgba(255,240,246,0.75)',
+                    border: '2px solid rgba(210,140,165,0.45)',
+                    borderRadius: 16,
+                    padding: '10px 18px',
+                    fontFamily: 'Caveat, cursive',
+                    fontSize: 22,
+                    color: '#B06880',
+                    outline: 'none',
+                    textAlign: 'center',
+                    boxSizing: 'border-box',
+                    caretColor: '#C04870',
+                    boxShadow: 'inset 0 2px 6px rgba(200,100,130,0.08)',
+                    transition: 'border-color 0.2s, box-shadow 0.2s',
+                  }}
+                  onFocus={e => {
+                    e.target.style.borderColor = 'rgba(200,90,125,0.70)';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(210,100,135,0.13), inset 0 2px 6px rgba(200,100,130,0.08)';
+                  }}
+                  onBlur={e => {
+                    e.target.style.borderColor = 'rgba(210,140,165,0.45)';
+                    e.target.style.boxShadow = 'inset 0 2px 6px rgba(200,100,130,0.08)';
+                  }}
+                />
+              </div>
 
               {/* CTA button — pink pill */}
               <button
@@ -221,7 +270,7 @@ export default function LandingScreen({ onEnter }) {
                 onMouseUp={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
               >
-                ▶ Enter the Café
+                ▶ ENTER THE CAFÉ
               </button>
             </div>
           </div>
