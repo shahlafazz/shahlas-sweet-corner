@@ -70,7 +70,7 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
             : '0 2px 6px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.6)',
         transform: locked ? `translateY(${NUDGE_Y[slotIdx % NUDGE_Y.length]}px)` : tileTransform,
         transition: 'transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease, opacity 0.22s ease',
-        margin: '2px',
+        margin: 0,
       }}
     >
       {/* Selected heart badge */}
@@ -328,31 +328,27 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
             </div>
 
             {/* ── Item grid (ROWS × COLS, responsive) ── */}
-            <div style={{ padding: isMobile ? '14px 10px 12px' : '10px 10px 4px' }}>
-              {Array.from({ length: ROWS }).map((_, row) => (
-                <div key={row} style={{
-                  display: 'grid',
-                  gridTemplateColumns: `repeat(${COLS}, 1fr)`,
-                  gap: isMobile ? 6 : 8,
-                  marginBottom: row < ROWS - 1 ? 4 : 0,
-                }}>
-                  {padded.slice(row * COLS, row * COLS + COLS).map((item, col) => (
-                    <div key={col} style={{ height: cellHeight, overflow: 'hidden' }}>
-                      {item ? (
-                        <MenuItem
-                          item={item}
-                          selected={!!selectedItems.find(i => i.id === item.id)}
-                          locked={isBoxFull && !selectedItems.find(i => i.id === item.id)}
-                          onToggle={onToggleItem}
-                          slotIdx={row * COLS + col}
-                          imgSize={imgSize}
-                          compact={isMobile}
-                        />
-                      ) : (
-                        <div style={{ height: cellHeight }} />
-                      )}
-                    </div>
-                  ))}
+            <div style={{
+              padding: isMobile ? '14px 10px 12px' : '10px 10px 4px',
+              display: 'grid',
+              gridTemplateColumns: `repeat(${COLS}, 1fr)`,
+              gap: isMobile ? 8 : 10,
+            }}>
+              {padded.map((item, idx) => (
+                <div key={idx} style={{ height: cellHeight, overflow: 'hidden' }}>
+                  {item ? (
+                    <MenuItem
+                      item={item}
+                      selected={!!selectedItems.find(i => i.id === item.id)}
+                      locked={isBoxFull && !selectedItems.find(i => i.id === item.id)}
+                      onToggle={onToggleItem}
+                      slotIdx={idx}
+                      imgSize={imgSize}
+                      compact={isMobile}
+                    />
+                  ) : (
+                    <div style={{ height: cellHeight }} />
+                  )}
                 </div>
               ))}
             </div>
