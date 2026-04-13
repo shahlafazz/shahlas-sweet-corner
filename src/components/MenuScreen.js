@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import menuItems from '../data/menuItems';
+import menuItems, { mobileMenuItems } from '../data/menuItems';
 import bakeryInterior from '../assets/bakery-interior.jpeg';
 
 /* ─── Responsive hook ───────────────────────────────────────── */
@@ -192,12 +192,13 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   const [page, setPage] = useState(0);
   useEffect(() => { setPage(0); }, [isMobile]);
 
-  const totalPages = Math.ceil(menuItems.length / perPage);
-  const pageItems  = menuItems.slice(page * perPage, (page + 1) * perPage);
+  const items      = isMobile ? mobileMenuItems : menuItems;
+  const totalPages = Math.ceil(items.length / perPage);
+  const pageItems  = items.slice(page * perPage, (page + 1) * perPage);
   const isBoxFull  = selectedItems.length >= 6;
 
   /* remaining items on the next page */
-  const nextPageCount = menuItems.slice((page + 1) * perPage, (page + 2) * perPage).length;
+  const nextPageCount = items.slice((page + 1) * perPage, (page + 2) * perPage).length;
 
   /* pad to fill grid so it keeps consistent height */
   const padded = [...pageItems];
