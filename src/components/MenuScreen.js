@@ -82,6 +82,7 @@ function MenuItem({ item, selected, locked, onToggle, slotIdx, imgSize = 76, com
           zIndex: 2,
           animation: 'heartPop 0.25s ease-out',
           boxShadow: '0 2px 6px rgba(200,50,80,0.35)',
+          pointerEvents: 'none',
         }}>♥</div>
       )}
 

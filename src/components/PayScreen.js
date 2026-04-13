@@ -31,11 +31,25 @@ export default function PayScreen({ onComplete }) {
   const [phase, setPhase]       = useState(1);
   const [phaseIn, setPhaseIn]   = useState(true);
   const [dotCount, setDotCount] = useState(0);
+  const isMobile = window.innerWidth < 640;
+
+  /* Preload all assets so there's no flash when they first appear */
+  useEffect(() => {
+    [kitchenImg, readyImg, treatsGif].forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   useEffect(() => {
     const t1 = setTimeout(() => {
       setPhaseIn(false);
-      setTimeout(() => { setPhase(2); setPhaseIn(true); }, 380);
+      setTimeout(() => {
+        setPhase(2);
+        /* Wait two animation frames so the new content renders at opacity=0
+           before the fade-in begins — prevents a one-frame flash of bakingGif */
+        requestAnimationFrame(() => requestAnimationFrame(() => setPhaseIn(true)));
+      }, 380);
     }, 4000);
     const t2 = setTimeout(() => onComplete(), 8000);
     return () => [t1, t2].forEach(clearTimeout);
@@ -61,6 +75,7 @@ export default function PayScreen({ onComplete }) {
       justifyContent: 'center',
       padding: '24px 16px',
       gap: 28,
+      backgroundColor: '#1A0C06',
       backgroundImage: `url(${phase === 1 ? kitchenImg : readyImg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -128,7 +143,7 @@ export default function PayScreen({ onComplete }) {
               opacity: 0,
               animation: `letterReveal 0.5s ease ${subtitleDelay}s forwards`,
             }}>
-              Wrapped with love ♥
+              Wrapped with love{isMobile ? '' : ' ♥'}
             </div>
           </div>
         )}

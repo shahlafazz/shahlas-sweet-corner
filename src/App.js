@@ -101,7 +101,7 @@ function App() {
             toName={toName}
             fromName={fromName}
             onBack={startOver}
-            onAddMore={() => goToStep(1)}
+            onAddMore={() => goToStepWithFade(1)}
           />
         )}
       </div>
