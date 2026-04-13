@@ -339,7 +339,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
               overflow: 'hidden',
             }}>
               {padded.map((item, idx) => (
-                <div key={idx} style={{ position: 'relative', height: cellHeight, overflow: 'hidden', minHeight: 0 }}>
+                <div key={idx} style={{ position: 'relative', height: cellHeight, minHeight: 0 }}>
                   {item ? (
                     <MenuItem
                       item={item}
