@@ -196,7 +196,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
                 fontStyle: 'italic',
                 lineHeight: 1.55,
               }}>
-                <span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginRight: 11 }}>♥</span>a sweet little gift, made with love<span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginLeft: 11 }}>♥</span>
+                <span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginRight: 11 }}>♥︎</span>a sweet little gift, made with love<span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginLeft: 11 }}>♥︎</span>
               </p>
 
               {/* Who is this for? */}
