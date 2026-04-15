@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import bakeryInterior from '../assets/bakery-interior.jpeg';
+import bakeryInterior       from '../assets/bakery-interior.jpeg';
+import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
 
 const MAX_CHARS = 200;
 
@@ -27,7 +28,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
       alignItems: 'center',
       justifyContent: 'center',
       padding: '32px 16px 48px',
-      backgroundImage: `url(${bakeryInterior})`,
+      backgroundImage: `url(${window.innerWidth < 640 ? bakeryInteriorMobile : bakeryInterior})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>

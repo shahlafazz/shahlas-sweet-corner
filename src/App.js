@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 import './App.css';
+import kitchenImg        from './assets/kitchen.jpeg';
+import kitchenMobileImg  from './assets/kitchen-mobile.jpeg';
+import readyImg          from './assets/ready.jpeg';
+import readyMobileImg    from './assets/ready-mobile.jpeg';
+import bakingGif         from './assets/baking.gif';
+import treatsGif         from './assets/treats.gif';
 import LandingScreen from './components/LandingScreen';
 import MenuScreen    from './components/MenuScreen';
 import NoteScreen    from './components/NoteScreen';
@@ -10,6 +16,14 @@ import SendScreen    from './components/SendScreen';
 
 function App() {
   const [step, setStep]                   = useState(0);
+
+  /* Preload PayScreen assets immediately so there's zero delay when the scene starts */
+  useEffect(() => {
+    [kitchenImg, kitchenMobileImg, readyImg, readyMobileImg, bakingGif, treatsGif].forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
   const [whiteIn, setWhiteIn]             = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const [personalNote, setPersonalNote]   = useState('');

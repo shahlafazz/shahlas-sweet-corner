@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import menuItems, { mobileMenuItems } from '../data/menuItems';
-import bakeryInterior from '../assets/bakery-interior.jpeg';
+import bakeryInterior       from '../assets/bakery-interior.jpeg';
+import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
 
 /* ─── Responsive hook ───────────────────────────────────────── */
 function useWindowWidth() {
@@ -207,7 +208,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
   return (
     <div style={{
       minHeight: '100vh', position: 'relative',
-      backgroundImage: `url(${bakeryInterior})`,
+      backgroundImage: `url(${isMobile ? bakeryInteriorMobile : bakeryInterior})`,
       backgroundSize: 'cover', backgroundPosition: 'center',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',

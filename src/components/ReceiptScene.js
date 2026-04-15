@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import bakeryInterior from '../assets/bakery-interior.jpeg';
+import bakeryInterior       from '../assets/bakery-interior.jpeg';
+import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
 
 const BG = {
-  backgroundImage: `url(${bakeryInterior})`,
+  backgroundImage: `url(${window.innerWidth < 640 ? bakeryInteriorMobile : bakeryInterior})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 };

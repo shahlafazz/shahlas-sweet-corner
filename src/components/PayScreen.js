@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import kitchenImg   from '../assets/kitchen.jpeg';
-import readyImg     from '../assets/ready.jpeg';
-import bakingGif    from '../assets/baking.gif';
-import treatsGif    from '../assets/treats.gif';
+import kitchenImg         from '../assets/kitchen.jpeg';
+import kitchenMobileImg   from '../assets/kitchen-mobile.jpeg';
+import readyImg           from '../assets/ready.jpeg';
+import readyMobileImg     from '../assets/ready-mobile.jpeg';
+import bakingGif          from '../assets/baking.gif';
+import treatsGif          from '../assets/treats.gif';
 
 /* ─── Letter-by-letter text ───────────────────────────────────── */
 function TypedText({ text, delayStart = 0, charDelay = 0.055, style }) {
@@ -32,14 +34,8 @@ export default function PayScreen({ onComplete }) {
   const [phaseIn, setPhaseIn]   = useState(true);
   const [dotCount, setDotCount] = useState(0);
   const isMobile = window.innerWidth < 640;
-
-  /* Preload all assets so there's no flash when they first appear */
-  useEffect(() => {
-    [kitchenImg, readyImg, treatsGif].forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
+  const bgKitchen = isMobile ? kitchenMobileImg : kitchenImg;
+  const bgReady   = isMobile ? readyMobileImg   : readyImg;
 
   useEffect(() => {
     const t1 = setTimeout(() => {
@@ -76,7 +72,7 @@ export default function PayScreen({ onComplete }) {
       padding: '24px 16px',
       gap: 28,
       backgroundColor: '#1A0C06',
-      backgroundImage: `url(${phase === 1 ? kitchenImg : readyImg})`,
+      backgroundImage: `url(${phase === 1 ? bgKitchen : bgReady})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>

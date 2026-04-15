@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import cafeExterior from '../assets/cafe-exterior.jpeg';
+import cafeExterior       from '../assets/cafe-exterior.jpeg';
+import cafeExteriorMobile from '../assets/landingpage-mobile.jpeg';
 
 /* ─── Large top bow ─────────────────────────────────────────── */
 function TopBow() {
@@ -107,7 +108,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
       minHeight: '100vh', position: 'relative',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      backgroundImage: `url(${cafeExterior})`,
+      backgroundImage: `url(${window.innerWidth < 640 ? cafeExteriorMobile : cafeExterior})`,
       backgroundSize: 'cover', backgroundPosition: 'center',
       padding: '24px 16px',
     }}>
