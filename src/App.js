@@ -19,14 +19,23 @@ function App() {
   const [muted, setMuted]                 = useState(false);
   const audioRef                          = useRef(null);
 
-  const startMusic = () => {
-    if (audioRef.current && audioRef.current.paused) {
-      audioRef.current.play().catch(() => {});
-    }
-  };
-
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = 0.12;
+
+    const startOnFirstInteraction = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        audioRef.current.play().catch(() => {});
+      }
+      document.removeEventListener('click', startOnFirstInteraction);
+      document.removeEventListener('touchstart', startOnFirstInteraction);
+    };
+
+    document.addEventListener('click', startOnFirstInteraction);
+    document.addEventListener('touchstart', startOnFirstInteraction);
+    return () => {
+      document.removeEventListener('click', startOnFirstInteraction);
+      document.removeEventListener('touchstart', startOnFirstInteraction);
+    };
   }, []);
 
   useEffect(() => {
@@ -80,7 +89,7 @@ function App() {
       <div className="app-root">
         {step === 0 && (
           <LandingScreen
-            onEnter={() => { startMusic(); goToStepWithFade(1); }}
+            onEnter={() => goToStepWithFade(1)}
             toName={toName}
             onToNameChange={setToName}
           />
@@ -140,8 +149,7 @@ function App() {
       <audio ref={audioRef} src="/sounds/bg-music.mp3" loop preload="auto" />
 
       {/* Mute toggle — fixed bottom-right */}
-      {step > 0 && (
-        <button
+      <button
           onClick={() => setMuted(m => !m)}
           title={muted ? 'Unmute music' : 'Mute music'}
           style={{
@@ -160,7 +168,6 @@ function App() {
         >
           {muted ? '🔇' : '🎵'}
         </button>
-      )}
 
       {/* Cream overlay — Enter Café, Place Order, treats ready → Send */}
       <div style={{
