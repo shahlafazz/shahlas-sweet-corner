@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
 import './App.css';
 import kitchenImg        from './assets/kitchen.jpeg';
@@ -16,6 +16,22 @@ import SendScreen    from './components/SendScreen';
 
 function App() {
   const [step, setStep]                   = useState(0);
+  const [muted, setMuted]                 = useState(false);
+  const audioRef                          = useRef(null);
+
+  const startMusic = () => {
+    if (audioRef.current && audioRef.current.paused) {
+      audioRef.current.play().catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = 0.12;
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.muted = muted;
+  }, [muted]);
 
   /* Preload PayScreen assets immediately so there's zero delay when the scene starts */
   useEffect(() => {
@@ -64,7 +80,7 @@ function App() {
       <div className="app-root">
         {step === 0 && (
           <LandingScreen
-            onEnter={() => goToStepWithFade(1)}
+            onEnter={() => { startMusic(); goToStepWithFade(1); }}
             toName={toName}
             onToNameChange={setToName}
           />
@@ -119,6 +135,32 @@ function App() {
           />
         )}
       </div>
+
+      {/* Background music */}
+      <audio ref={audioRef} src="/sounds/bg-music.mp3" loop preload="auto" />
+
+      {/* Mute toggle — fixed bottom-right */}
+      {step > 0 && (
+        <button
+          onClick={() => setMuted(m => !m)}
+          title={muted ? 'Unmute music' : 'Mute music'}
+          style={{
+            position: 'fixed', bottom: 18, right: 18, zIndex: 10000,
+            width: 36, height: 36,
+            background: 'rgba(253,244,227,0.88)',
+            border: '1.5px solid rgba(200,140,160,0.45)',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            fontSize: 16,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+            backdropFilter: 'blur(4px)',
+            transition: 'opacity 0.2s',
+          }}
+        >
+          {muted ? '🔇' : '🎵'}
+        </button>
+      )}
 
       {/* Cream overlay — Enter Café, Place Order, treats ready → Send */}
       <div style={{
