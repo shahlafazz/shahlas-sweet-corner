@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
 import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
+import { playClick, playSend } from '../sounds';
 
 const SERVICE_ID  = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -228,7 +229,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
                 Your sweet parcel is on its way to {email}.<br />May it bring a big smile!
               </p>
               <button
-                onClick={onBack}
+                onClick={() => { playClick(); onBack(); }}
                 style={{
                   fontFamily: "'Press Start 2P', monospace",
                   fontSize: 7,
@@ -276,7 +277,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
             <SectionLabel style={{ marginBottom: 0 }}>What's inside 🎁</SectionLabel>
             <button
-              onClick={onAddMore}
+              onClick={() => { playClick(); onAddMore(); }}
               style={{
                 fontFamily: 'VT323, monospace',
                 fontSize: 17,
@@ -374,7 +375,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           {/* ── Seal & Send ── */}
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 26 }}>
             <button
-              onClick={handleSend}
+              onClick={() => { playSend(); handleSend(); }}
               disabled={status === 'sending'}
               style={{
                 fontFamily: "'Press Start 2P', monospace",
@@ -407,7 +408,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
         {/* ── Back button ── */}
         <div style={{ marginTop: 16 }}>
           <button
-            onClick={onBack}
+            onClick={() => { playClick(); onBack(); }}
             style={{
               fontFamily: "'Press Start 2P', monospace",
               fontSize: 6.5,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
 import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
+import { playClick } from '../sounds';
 
 const BG = {
   backgroundImage: `url(${window.innerWidth < 640 ? bakeryInteriorMobile : bakeryInterior})`,
@@ -315,7 +316,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
           marginTop: 16,
         }}>
           <button
-            onClick={onNext}
+            onClick={() => { playClick(); onNext(); }}
             style={{
               fontFamily: "'Press Start 2P', monospace",
               fontSize: 9,
@@ -336,7 +337,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
             PLACE ORDER ▶
           </button>
           <button
-            onClick={onBack}
+            onClick={() => { playClick(); onBack(); }}
             style={{
               fontFamily: "'Press Start 2P', monospace",
               fontSize: 7,

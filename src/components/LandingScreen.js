@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import cafeExterior       from '../assets/cafe-exterior.jpeg';
 import cafeExteriorMobile from '../assets/landingpage-mobile.jpeg';
+import { playClick } from '../sounds';
 
 /* ─── Large top bow ─────────────────────────────────────────── */
 function TopBow() {
@@ -250,7 +251,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
 
               {/* CTA button — pink pill */}
               <button
-                onClick={onEnter}
+                onClick={() => { playClick(); onEnter(); }}
                 style={{
                   fontFamily: "'Press Start 2P', monospace",
                   fontSize: 8,

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import menuItems, { mobileMenuItems } from '../data/menuItems';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
 import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
+import { playClick, playSelect, playDeselect } from '../sounds';
 
 /* ─── Responsive hook ───────────────────────────────────────── */
 function useWindowWidth() {
@@ -23,6 +24,7 @@ function MenuItem({ item, selected, locked, onToggle, imgSize = 76, compact = fa
     if (locked) return;
     setPopping(true);
     setTimeout(() => setPopping(false), 180);
+    selected ? playDeselect() : playSelect();
     onToggle(item);
   };
 
@@ -130,7 +132,7 @@ function PageArrow({ dir, onClick, disabled, remainingCount }) {
   const isNext = dir === 'next';
   return (
     <button
-      onClick={onClick}
+      onClick={() => { if (!disabled) { playClick(); onClick(); } }}
       disabled={disabled}
       style={{
         height: 34,
@@ -369,7 +371,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                 {Array.from({ length: totalPages }).map((_, i) => (
                   <div
                     key={i}
-                    onClick={() => setPage(i)}
+                    onClick={() => { playClick(); setPage(i); }}
                     style={{
                       width: i === page ? 22 : 8, height: 8,
                       borderRadius: 4,
@@ -397,7 +399,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                 animation: 'fade-in 0.3s ease',
               }}>
                 <button
-                  onClick={onNext}
+                  onClick={() => { playClick(); onNext(); }}
                   style={{
                     fontFamily: "'Press Start 2P', monospace",
                     fontSize: 8,
@@ -431,7 +433,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
       {!isMobile && (
         <div style={{ position: 'relative', zIndex: 1, marginTop: 16, zoom: 0.85 }}>
           <button
-            onClick={onBack}
+            onClick={() => { playClick(); onBack(); }}
             style={{
               fontFamily: "'Press Start 2P', monospace",
               fontSize: 7,

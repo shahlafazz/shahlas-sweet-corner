@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
 import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
+import { playClick } from '../sounds';
 
 const MAX_CHARS = 200;
 
@@ -230,7 +231,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           paddingRight: 12,
         }}>
           <button
-            onClick={onBack}
+            onClick={() => { playClick(); onBack(); }}
             style={{
               fontFamily: "'Press Start 2P', monospace",
               fontSize: 7,
@@ -253,7 +254,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           </button>
 
           <button
-            onClick={onNext}
+            onClick={() => { playClick(); onNext(); }}
             style={{
               fontFamily: "'Press Start 2P', monospace",
               fontSize: 8,
