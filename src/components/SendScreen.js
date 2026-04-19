@@ -14,20 +14,67 @@ const BG = {
   backgroundPosition: 'center',
 };
 
-/* ── Subtle grid / receipt paper texture ── */
+/* ── Warm parchment + subtle grid ── */
 const PAPER = {
-  background: '#FDF6EE',
-  backgroundImage: `
-    linear-gradient(rgba(190,155,120,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(190,155,120,0.07) 1px, transparent 1px)
-  `,
-  backgroundSize: '22px 22px',
+  background: [
+    'linear-gradient(rgba(190,155,120,0.04) 1px, transparent 1px)',
+    'linear-gradient(90deg, rgba(190,155,120,0.04) 1px, transparent 1px)',
+    'radial-gradient(ellipse at 50% 20%, #FFFDF8 0%, #FFF8EE 55%, #FDF2E4 100%)',
+  ].join(', '),
+  backgroundSize: '24px 24px, 24px 24px, cover',
 };
+
+/* ── Single centered pink washi tape ── */
+function WashiTapes() {
+  return (
+    <div style={{
+      position: 'absolute', top: -10, left: '50%',
+      transform: 'translateX(-50%) rotate(-1deg)',
+      width: 72, height: 19,
+      background: 'repeating-linear-gradient(90deg,rgba(245,185,198,0.90) 0px,rgba(245,185,198,0.90) 5px,rgba(255,210,220,0.90) 5px,rgba(255,210,220,0.90) 10px)',
+      borderRadius: 3,
+      boxShadow: '0 2px 5px rgba(0,0,0,0.08)', zIndex: 10,
+    }} />
+  );
+}
+
+/* ── Corner flower / star flourishes ── */
+function CornerDecors() {
+  return (
+    <>
+      <div style={{ position: 'absolute', top: 14, right: 16, fontSize: 17, opacity: 0.32, userSelect: 'none', lineHeight: 1, pointerEvents: 'none' }}>✿</div>
+      <div style={{ position: 'absolute', top: 32, right: 12, fontSize: 10, opacity: 0.22, userSelect: 'none', lineHeight: 1, pointerEvents: 'none' }}>✦</div>
+      <div style={{ position: 'absolute', bottom: 20, left: 13, fontSize: 15, opacity: 0.28, userSelect: 'none', lineHeight: 1, pointerEvents: 'none' }}>❀</div>
+      <div style={{ position: 'absolute', bottom: 38, left: 11, fontSize: 9, opacity: 0.20, userSelect: 'none', lineHeight: 1, pointerEvents: 'none' }}>✦</div>
+      <div style={{ position: 'absolute', bottom: 18, right: 15, fontSize: 11, opacity: 0.20, userSelect: 'none', lineHeight: 1, pointerEvents: 'none' }}>✿</div>
+    </>
+  );
+}
+
+/* ── Bakery stamp ── */
+function BakeryStamp() {
+  return (
+    <div style={{
+      position: 'absolute', top: 18, right: 22,
+      width: 52, height: 52,
+      border: '2px solid rgba(170,90,65,0.38)',
+      borderRadius: '50%',
+      display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      transform: 'rotate(14deg)',
+      opacity: 0.52,
+      pointerEvents: 'none',
+    }}>
+      <div style={{ fontSize: 20, lineHeight: 1 }}>🧁</div>
+      <div style={{ fontFamily: 'VT323, monospace', fontSize: 8, color: '#7A3828', letterSpacing: 1, textAlign: 'center', lineHeight: 1.4 }}>SWEET</div>
+    </div>
+  );
+}
 
 /* ── Small pink bow divider ── */
 function BowDivider() {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', margin: '10px 0 18px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', margin: '5px 0 8px' }}>
       <div style={{ flex: 1, height: 1.5, background: 'linear-gradient(90deg, transparent, #F0B8C4)' }} />
       <div style={{ position: 'relative', width: 44, height: 28, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{
@@ -62,21 +109,49 @@ function BowDivider() {
   );
 }
 
-/* ── Dashed divider ── */
+/* ── Ornate triple-dot divider ── */
 function Divider() {
-  return <div style={{ borderTop: '1.5px dashed rgba(190,150,115,0.35)', margin: '20px 0' }} />;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 5, margin: '10px 0' }}>
+      <div style={{ flex: 1, height: 1.5, background: 'linear-gradient(90deg, transparent, rgba(200,155,120,0.45))' }} />
+      <span style={{ fontSize: 9, color: 'rgba(200,155,120,0.65)', userSelect: 'none', lineHeight: 1 }}>✦</span>
+      <span style={{ fontSize: 12, color: 'rgba(200,155,120,0.65)', userSelect: 'none', lineHeight: 1 }}>✦</span>
+      <span style={{ fontSize: 9, color: 'rgba(200,155,120,0.65)', userSelect: 'none', lineHeight: 1 }}>✦</span>
+      <div style={{ flex: 1, height: 1.5, background: 'linear-gradient(90deg, rgba(200,155,120,0.45), transparent)' }} />
+    </div>
+  );
 }
 
-/* ── Section label — clear, warm, readable ── */
+/* ── Section label pill ── */
 function SectionLabel({ children, style }) {
   return (
     <div style={{
+      display: 'inline-block',
       fontFamily: 'VT323, monospace',
-      fontSize: 22,
-      color: '#7A3828',
-      letterSpacing: 2,
-      lineHeight: 1.4,
-      marginBottom: 14,
+      fontSize: 16,
+      color: '#B05870',
+      letterSpacing: 1.5,
+      lineHeight: 1.3,
+      marginBottom: 6,
+      background: '#FFF3E0',
+      padding: '1px 10px 1px 8px',
+      borderRadius: 20,
+      border: '1px solid rgba(235,170,185,0.55)',
+      ...style,
+    }}>
+      {children}
+    </div>
+  );
+}
+
+/* ── Soft section panel ── */
+function SectionPanel({ children, style }) {
+  return (
+    <div style={{
+      background: 'rgba(255,242,228,0.58)',
+      border: '1.5px solid rgba(215,175,140,0.28)',
+      borderRadius: 14,
+      padding: '10px 12px',
       ...style,
     }}>
       {children}
@@ -98,15 +173,15 @@ function ThumbnailGrid({ items }) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: 6,
-          width: 84,
+          gap: 4,
+          width: 66,
         }}>
           <div style={{
-            width: 84,
-            height: 84,
+            width: 66,
+            height: 66,
             background: 'linear-gradient(180deg, #FFF6EE, #FFEEDE)',
             border: '2px solid #D4906A',
-            borderRadius: 16,
+            borderRadius: 13,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -116,17 +191,17 @@ function ThumbnailGrid({ items }) {
             <img
               src={item.image}
               alt={item.name}
-              style={{ width: 60, height: 60, objectFit: 'contain', imageRendering: 'pixelated', display: 'block' }}
+              style={{ width: 46, height: 46, objectFit: 'contain', imageRendering: 'pixelated', display: 'block' }}
               draggable={false}
             />
           </div>
           <div style={{
             fontFamily: 'VT323, monospace',
-            fontSize: 15,
+            fontSize: 13,
             color: '#5C3020',
             textAlign: 'center',
-            lineHeight: 1.25,
-            width: 84,
+            lineHeight: 1.2,
+            width: 66,
             wordBreak: 'break-word',
           }}>
             {item.name}
@@ -198,19 +273,24 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
 
   const card = {
     ...PAPER,
-    borderRadius: 20,
-    padding: '24px 20px 28px',
-    boxShadow: '0 8px 32px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.07)',
-    border: '1.5px solid rgba(220,185,155,0.45)',
+    borderRadius: 22,
+    padding: '18px 20px 20px',
+    boxShadow: '0 4px 20px rgba(0,0,0,0.08), 0 1px 6px rgba(0,0,0,0.04)',
+    border: '2px solid rgba(210,165,128,0.50)',
+    outline: '5px solid rgba(250,228,205,0.55)',
+    outlineOffset: -9,
+    position: 'relative',
   };
 
   /* ── Success ── */
   if (status === 'success') {
     return (
       <div style={{ minHeight: '100vh', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 16px', ...BG }}>
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.1)', zIndex: 0, pointerEvents: 'none' }} />
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0)', zIndex: 0, pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 480 }}>
           <div style={card}>
+            <WashiTapes />
+            <CornerDecors />
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 2 }}>
                 Shahla's Sweet Corner
@@ -255,18 +335,21 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
 
   /* ── Main screen ── */
   return (
-    <div style={{ minHeight: '100vh', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px 16px', ...BG }}>
+    <div style={{ minHeight: '100vh', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px 16px', ...BG }}>
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.1)', zIndex: 0, pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: 520, width: '100%', position: 'relative', zIndex: 1, }}>
         <div style={card}>
+          <WashiTapes />
+          <CornerDecors />
+          <BakeryStamp />
 
           {/* ── Header ── */}
-          <div style={{ textAlign: 'center', marginBottom: 4 }}>
-            <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 2 }}>
+          <div style={{ textAlign: 'center', marginBottom: 2 }}>
+            <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 1.8 }}>
               Shahla's Sweet Corner
             </div>
-            <div style={{ fontFamily: 'Caveat, cursive', fontSize: 18, color: '#A07050', fontStyle: 'italic', marginTop: 2 }}>
+            <div style={{ fontFamily: 'Caveat, cursive', fontSize: 16, color: '#A07050', fontStyle: 'italic', marginTop: 1 }}>
               a little something sweet, just for you 🌸
             </div>
           </div>
@@ -274,8 +357,8 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           <BowDivider />
 
           {/* ── What's inside ── */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-            <SectionLabel style={{ marginBottom: 0 }}>What's inside 🎁</SectionLabel>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, flexWrap: 'wrap', gap: 6 }}>
+            <SectionLabel style={{ marginBottom: 0, background: '#FFF3E0', border: '1px solid rgba(170,135,85,0.50)', color: '#9B6340' }}>What's inside 🎁</SectionLabel>
             <button
               onClick={() => { playClick(); onAddMore(); }}
               style={{
@@ -300,19 +383,14 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           <Divider />
 
           {/* ── A little note ── */}
-          <SectionLabel>A little note 💌</SectionLabel>
-          <div style={{
-            background: 'rgba(255,242,238,0.75)',
-            border: '1.5px solid rgba(220,165,140,0.30)',
-            borderRadius: 12,
-            padding: '14px 16px',
-          }}>
+          <SectionLabel style={{ background: '#FFF3E0', border: '1px solid rgba(180,120,128,0.50)', color: '#9B6340' }}>A little note 💌</SectionLabel>
+          <SectionPanel style={{ marginTop: 8 }}>
             {personalNote ? (
               <p style={{
                 fontFamily: 'Caveat, cursive',
-                fontSize: 22,
+                fontSize: 18,
                 color: '#5C3020',
-                lineHeight: 1.7,
+                lineHeight: 1.5,
                 margin: 0,
               }}>
                 {personalNote}
@@ -320,21 +398,21 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
             ) : (
               <p style={{
                 fontFamily: 'Caveat, cursive',
-                fontSize: 20,
+                fontSize: 17,
                 color: '#C4A090',
                 fontStyle: 'italic',
                 margin: 0,
-                lineHeight: 1.7,
+                lineHeight: 1.5,
               }}>
                 No note included...
               </p>
             )}
-          </div>
+          </SectionPanel>
 
           <Divider />
 
           {/* ── To ── */}
-          <SectionLabel>To: 📮</SectionLabel>
+          <SectionLabel style={{ background: '#FFF3E0', border: '1px solid rgba(170,135,85,0.50)', color: '#9B6340' }}>To: 📮</SectionLabel>
           <input
             type="email"
             value={email}
@@ -345,15 +423,16 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
             style={{
               width: '100%',
               boxSizing: 'border-box',
-              padding: '8px 4px',
+              padding: '5px 4px',
               fontFamily: 'Caveat, cursive',
-              fontSize: 22,
+              fontSize: 19,
               color: '#5C3020',
               background: 'transparent',
               border: 'none',
               borderBottom: '1.5px dashed rgba(190,140,110,0.45)',
               outline: 'none',
               letterSpacing: 0.3,
+              marginTop: 8,
               marginBottom: 4,
             }}
           />
@@ -373,7 +452,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           )}
 
           {/* ── Seal & Send ── */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 26 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
             <button
               onClick={() => { playSend(); handleSend(); }}
               disabled={status === 'sending'}
