@@ -42,13 +42,7 @@ function App() {
     if (audioRef.current) audioRef.current.muted = muted;
   }, [muted]);
 
-  /* Preload PayScreen assets immediately so there's zero delay when the scene starts */
-  useEffect(() => {
-    [kitchenImg, kitchenMobileImg, readyImg, readyMobileImg, bakingGif, treatsGif].forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
+  /* Preload PayScreen assets — rendered as hidden imgs so browser fully decodes GIF frames */
   const [whiteIn, setWhiteIn]             = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const [personalNote, setPersonalNote]   = useState('');
@@ -86,6 +80,12 @@ function App() {
 
   return (
     <>
+      {/* Hidden preload — forces browser to fully decode GIFs and cache backgrounds */}
+      <div style={{ display: 'none' }} aria-hidden="true">
+        {[kitchenImg, kitchenMobileImg, readyImg, readyMobileImg, bakingGif, treatsGif].map((src, i) => (
+          <img key={i} src={src} alt="" />
+        ))}
+      </div>
       <div className="app-root">
         {step === 0 && (
           <LandingScreen
