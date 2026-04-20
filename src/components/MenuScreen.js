@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import menuItems, { mobileMenuItems } from '../data/menuItems';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
-import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
+import bakeryInteriorMobile from '../assets/interiormb.jpeg';
 import { playClick, playSelect, playDeselect } from '../sounds';
 
 /* ─── Responsive hook ───────────────────────────────────────── */

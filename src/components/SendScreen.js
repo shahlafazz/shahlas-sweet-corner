@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
-import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
+import bakeryInteriorMobile from '../assets/interiormb.jpeg';
 import { playClick, playSend } from '../sounds';
 
 const SERVICE_ID  = process.env.REACT_APP_EMAILJS_SERVICE_ID;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
-import bakeryInteriorMobile from '../assets/interior-mobile.jpg';
+import bakeryInteriorMobile from '../assets/interiormb.jpeg';
 import { playClick } from '../sounds';
 
 const BG = {
