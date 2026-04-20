@@ -1,5 +1,6 @@
 import BakewellTart from '../assets/BakewellTart.png';
 import BananaSplit from '../assets/BananaSplit.png';
+import CookieCheesecake from '../assets/CookieCheesecake.png';
 import BanoffeePot from '../assets/BanoffeePot.png';
 import BlueJelly from '../assets/BlueJelly.png';
 import CarrotCake from '../assets/CarrotCake.png';
@@ -73,13 +74,30 @@ const allItems = [
   { id: 'swiss_roll',              name: 'Swiss Roll',              mobileImgSize: 62, price: 5.00, description: 'Fluffy vanilla sponge rolled with fresh cream', image: SwissRoll,    imageUrl: `${BASE}/SwissRoll.png` },
   { id: 'tiramisu',                name: 'Tiramisu',                price: 6.50, description: 'Coffee-soaked sponge with mascarpone cloud',       image: Tiramisu,               imageUrl: `${BASE}/Tirimasu.png` },
   { id: 'waffles',                 name: 'Waffles',                 price: 6.00, description: 'Crispy golden waffles with butter and syrup',      image: Waffles,                imageUrl: `${BASE}/Waffles.png` },
+  { id: 'cookie_cheesecake',      name: 'Cookie Cheesecake',       price: 5.50, description: 'Creamy cheesecake with a cookie crumble base',       image: CookieCheesecake,       imageUrl: `${BASE}/CookieCheesecake.png` },
 ];
 
 /* Helper to look up an item by id */
 const byId = (id) => allItems.find(item => item.id === id);
 
-/* ── Desktop order (original) — default export ────────────────── */
-const menuItems = allItems;
+/* ── Desktop order — default export ───────────────────────────── */
+const menuItems = [
+  // Page 1
+  byId('vanilla_cake'),            byId('strawberry_shortcake'),    byId('raspberry_cheesecake_pot'),
+  byId('macarons'),                byId('red_velvet_cake'),          byId('panna_cotta'),
+  byId('blue_jelly'),              byId('lemon_cheesecake'),         byId('glazed_cinnamon_roll'),
+  byId('chocolate_swiss_roll'),    byId('berry_pancakes'),           byId('creme_caramel'),
+  // Page 2
+  byId('rainbow_cake'),            byId('carrot_cake'),              byId('chocolate_cake'),
+  byId('croissant'),               byId('tiramisu'),                 byId('danish_glazed'),
+  byId('cookie_cheesecake'),       byId('french_fancies'),           byId('cheesecake_pot'),
+  byId('cookie_n_cream_pot'),      byId('banoffee_pot'),             byId('lemon_blueberry_pot'),
+  // Page 3
+  byId('bakewell_tart'),           byId('banana_split'),             byId('cherry_shortcake'),
+  byId('chocolate_donut'),         byId('chocolate_pancakes'),       byId('ice_cream_waffles'),
+  byId('lemon_donut'),             byId('rainbow_pancakes'),         byId('strawberry_donut'),
+  byId('strawberry_waffles'),      byId('swiss_roll'),               byId('waffles'),
+];
 
 /* ── Mobile order (Shahla's custom layout) ────────────────────── */
 export const mobileMenuItems = [
