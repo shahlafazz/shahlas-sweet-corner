@@ -4,7 +4,7 @@ import CookieCheesecake from '../assets/CookieCheesecake.png';
 import BanoffeePot from '../assets/BanoffeePot.png';
 import BlueJelly from '../assets/BlueJelly.png';
 import CarrotCake from '../assets/CarrotCake.png';
-import CheesecakePot from '../assets/CheesecakePot.png';
+import Cheesecake from '../assets/Cheesecake.png';
 import CherryShortcake from '../assets/CherryShortcake.png';
 import ChocolateCake from '../assets/ChocolateCake.png';
 import ChocolateDonut from '../assets/ChocolateDonut.png';
@@ -54,7 +54,7 @@ const allItems = [
   { id: 'bakewell_tart',           name: 'Bakewell Tart',           mobileImgSize: 62, price: 5.00, description: 'Almond frangipane on buttery shortcrust',    image: BakewellTart,   imageUrl: `${BASE}/BakewellTart.png` },
   { id: 'banana_split',            name: 'Banana Split',            price: 6.50, description: 'Classic banana with three scoops and sauce',       image: BananaSplit,            imageUrl: `${BASE}/BananaSplit.png` },
   { id: 'banoffee_pot',            name: 'Banoffee Pot',            mobileImagePadTop: 10, price: 5.50, description: 'Toffee, banana and whipped cream in a jar', image: BanoffeePot, imageUrl: `${BASE}/BanoffeePot.png` },
-  { id: 'cheesecake_pot',          name: 'Cheesecake Pot',          price: 5.50, description: 'Silky cheesecake layered in a little pot',         image: CheesecakePot,          imageUrl: `${BASE}/CheesecakePot.png` },
+  { id: 'cheesecake',              name: 'Cheesecake',              price: 5.50, description: 'Classic baked cheesecake with a buttery biscuit base', image: Cheesecake,            imageUrl: `${BASE}/Cheesecake.png` },
   { id: 'cherry_shortcake',        name: 'Cherry Shortcake',        price: 6.00, description: 'Light sponge piled with cream and cherries',       image: CherryShortcake,        imageUrl: `${BASE}/CherryShortcake.png` },
   { id: 'chocolate_cake',          name: 'Chocolate Cake',          price: 6.50, description: 'Rich dark chocolate layers, ganache frosted',      image: ChocolateCake,          imageUrl: `${BASE}/ChocolateCake.png` },
   { id: 'chocolate_donut',         name: 'Chocolate Donut',         mobileImgSize: 62, price: 4.00, description: 'Fluffy ring glazed in dark chocolate',       image: ChocolateDonut, imageUrl: `${BASE}/ChocolateDonut.png` },
@@ -88,14 +88,14 @@ const menuItems = [
   byId('blue_jelly'),              byId('lemon_cheesecake'),         byId('glazed_cinnamon_roll'),
   byId('chocolate_swiss_roll'),    byId('berry_pancakes'),           byId('creme_caramel'),
   // Page 2
-  byId('rainbow_cake'),            byId('carrot_cake'),              byId('chocolate_cake'),
-  byId('croissant'),               byId('tiramisu'),                 byId('danish_glazed'),
-  byId('cookie_cheesecake'),       byId('french_fancies'),           byId('cheesecake_pot'),
+  byId('cookie_cheesecake'),       byId('chocolate_cake'),           byId('rainbow_cake'),
+  byId('danish_glazed'),           byId('tiramisu'),                 byId('croissant'),
+  byId('strawberry_donut'),        byId('chocolate_donut'),          byId('lemon_donut'),
   byId('cookie_n_cream_pot'),      byId('banoffee_pot'),             byId('lemon_blueberry_pot'),
   // Page 3
-  byId('bakewell_tart'),           byId('banana_split'),             byId('cherry_shortcake'),
-  byId('chocolate_donut'),         byId('chocolate_pancakes'),       byId('ice_cream_waffles'),
-  byId('lemon_donut'),             byId('rainbow_pancakes'),         byId('strawberry_donut'),
+  byId('carrot_cake'),             byId('cheesecake'),               byId('bakewell_tart'),
+  byId('banana_split'),            byId('cherry_shortcake'),         byId('chocolate_pancakes'),
+  byId('french_fancies'),          byId('ice_cream_waffles'),        byId('rainbow_pancakes'),
   byId('strawberry_waffles'),      byId('swiss_roll'),               byId('waffles'),
 ];
 
@@ -116,7 +116,7 @@ export const mobileMenuItems = [
   // Page 4
   byId('carrot_cake'),      byId('cherry_shortcake'),   byId('french_fancies'),
   byId('chocolate_pancakes'), byId('rainbow_pancakes'), byId('banana_split'),
-  byId('swiss_roll'),       byId('cheesecake_pot'),
+  byId('swiss_roll'),       byId('cheesecake'),
 ];
 
 export default menuItems;
