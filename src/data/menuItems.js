@@ -83,7 +83,7 @@ const byId = (id) => allItems.find(item => item.id === id);
 /* ── Desktop order — default export ───────────────────────────── */
 const menuItems = [
   // Page 1
-  byId('vanilla_cake'),            byId('cherry_shortcake'),         byId('raspberry_cheesecake_pot'),
+  byId('vanilla_cake'),            byId('strawberry_shortcake'),     byId('raspberry_cheesecake_pot'),
   byId('macarons'),                byId('red_velvet_cake'),           byId('panna_cotta'),
   byId('blue_jelly'),              byId('lemon_cheesecake'),          byId('glazed_cinnamon_roll'),
   byId('chocolate_swiss_roll'),    byId('berry_pancakes'),            byId('creme_caramel'),
@@ -94,9 +94,9 @@ const menuItems = [
   byId('strawberry_donut'),        byId('chocolate_donut'),           byId('lemon_donut'),
   // Page 3
   byId('chocolate_cake'),          byId('french_fancies'),            byId('carrot_cake'),
-  byId('poached_pear'),            byId('chocolate_pancakes'),        byId('chocolate_twist'),
+  byId('poached_pear'),            byId('cherry_shortcake'),          byId('chocolate_twist'),
+  byId('strawberry_waffles'),      byId('chocolate_pancakes'),        byId('ice_cream_waffles'),
   byId('swiss_roll'),              byId('bakewell_tart'),             byId('banana_split'),
-  byId('strawberry_waffles'),      byId('strawberry_shortcake'),      byId('ice_cream_waffles'),
 ];
 
 /* ── Mobile order (Shahla's custom layout) ────────────────────── */
