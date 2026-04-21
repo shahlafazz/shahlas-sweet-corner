@@ -345,21 +345,23 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
                 <button
                   onClick={handleShare}
                   style={{
-                    fontFamily: 'Caveat, cursive',
-                    fontSize: 18,
+                    fontFamily: "'Press Start 2P', monospace",
+                    fontSize: 7,
                     background: 'rgba(240,180,196,0.22)',
                     color: '#C07888',
                     border: '1.5px solid rgba(210,140,160,0.40)',
                     borderRadius: 24,
-                    padding: '8px 24px',
+                    padding: '6px 18px',
                     cursor: 'pointer',
                     transition: 'opacity 0.2s',
+                    letterSpacing: 0.5,
+                    lineHeight: 1.8,
                     textDecoration: copied ? 'none' : 'underline',
                     textDecorationColor: 'rgba(195,130,148,0.40)',
                     textUnderlineOffset: '3px',
                   }}
                 >
-                  {copied ? '✓ Link copied!' : '🌸 Share the sweetness — send this to a friend'}
+                  {copied ? '✓ Link copied!' : 'Share the sweetness — send this to a friend'}
                 </button>
               </div>
             </div>
