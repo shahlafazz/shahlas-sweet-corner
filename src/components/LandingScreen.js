@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cafeExterior       from '../assets/cafe-exterior.jpeg';
-import cafeExteriorMobile from '../assets/opening-mobile.jpeg';
+import cafeExteriorMobile from '../assets/opening3.jpeg';
 import { playClick } from '../sounds';
 
 /* ─── Large top bow ─────────────────────────────────────────── */

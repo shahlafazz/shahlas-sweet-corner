@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
 import './App.css';
 import kitchenImg        from './assets/kitchen.jpeg';
-import kitchenMobileImg  from './assets/kitchen-mobile.jpeg';
+import kitchenMobileImg  from './assets/mobilekitchen.jpeg';
 import readyImg          from './assets/ready.jpeg';
 import readyMobileImg    from './assets/ready-mobile.jpeg';
 import bakingGif         from './assets/baking.gif';

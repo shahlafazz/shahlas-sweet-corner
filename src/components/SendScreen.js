@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import bakeryInterior       from '../assets/bakery-interior.jpeg';
-import bakeryInteriorMobile from '../assets/interior-mobile.jpeg';
+import finalScreenMobile    from '../assets/finalscreenmb.jpg';
 import { playClick, playSend } from '../sounds';
 
 const SERVICE_ID  = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -9,7 +9,7 @@ const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY  = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 const BG = {
-  backgroundImage: `url(${window.innerWidth < 640 ? bakeryInteriorMobile : bakeryInterior})`,
+  backgroundImage: `url(${window.innerWidth < 640 ? finalScreenMobile : bakeryInterior})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 };
