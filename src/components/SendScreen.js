@@ -217,6 +217,19 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
   const [status, setStatus]     = useState('idle');
   const [errorMsg, setError]    = useState('');
   const [emailFocused, setEmailFocused] = useState(false);
+  const [copied, setCopied]     = useState(false);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const text = '🌸 Share the sweetness — send this to a friend';
+    if (navigator.share) {
+      try { await navigator.share({ title: "Shahla's Sweet Corner", text, url }); } catch (_) {}
+    } else {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    }
+  };
 
   const handleSend = async () => {
     if (!email || !email.includes('@')) { setError('Please enter a valid email address.'); return; }
@@ -327,6 +340,29 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
               >
                 ▶ Start Over
               </button>
+
+              <div style={{ marginTop: 20 }}>
+                <p style={{ fontFamily: 'Caveat, cursive', fontSize: 17, color: '#A07060', marginBottom: 10, fontStyle: 'italic' }}>
+                  Know someone who'd love this? 🌸
+                </p>
+                <button
+                  onClick={handleShare}
+                  style={{
+                    fontFamily: 'Caveat, cursive',
+                    fontSize: 18,
+                    background: 'rgba(255,240,245,0.85)',
+                    color: '#B05870',
+                    border: '1.5px solid rgba(220,140,165,0.55)',
+                    borderRadius: 24,
+                    padding: '8px 24px',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(220,140,165,0.18)',
+                    transition: 'opacity 0.2s',
+                  }}
+                >
+                  {copied ? '✓ Link copied!' : '🌸 Share the sweetness — send this to a friend'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
