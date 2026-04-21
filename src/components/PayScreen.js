@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { playOvenDing } from '../sounds';
 import kitchenImg         from '../assets/kitchen.jpeg';
-import kitchenMobileImg   from '../assets/mobilekitchen.jpeg';
+import kitchenMobileImg   from '../assets/kitchenmb.jpeg';
 import readyImg           from '../assets/ready.jpeg';
 import readyMobileImg     from '../assets/ready-mobile.jpeg';
 import bakingGif          from '../assets/baking.gif';
@@ -38,6 +39,7 @@ export default function PayScreen({ onComplete }) {
   const bgReady   = isMobile ? readyMobileImg   : readyImg;
 
   useEffect(() => {
+    const tDing = setTimeout(() => playOvenDing(), 3000);
     const t1 = setTimeout(() => {
       setPhaseIn(false);
       setTimeout(() => {
@@ -48,7 +50,7 @@ export default function PayScreen({ onComplete }) {
       }, 380);
     }, 4000);
     const t2 = setTimeout(() => onComplete(), 8000);
-    return () => [t1, t2].forEach(clearTimeout);
+    return () => [tDing, t1, t2].forEach(clearTimeout);
   }, [onComplete]);
 
   useEffect(() => {

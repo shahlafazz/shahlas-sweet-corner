@@ -213,9 +213,10 @@ function ThumbnailGrid({ items }) {
 }
 
 export default function SendScreen({ selectedItems, personalNote, toName, fromName, onBack, onAddMore }) {
-  const [email, setEmail]   = useState('');
-  const [status, setStatus] = useState('idle');
-  const [errorMsg, setError] = useState('');
+  const [email, setEmail]       = useState('');
+  const [status, setStatus]     = useState('idle');
+  const [errorMsg, setError]    = useState('');
+  const [emailFocused, setEmailFocused] = useState(false);
 
   const handleSend = async () => {
     if (!email || !email.includes('@')) { setError('Please enter a valid email address.'); return; }
@@ -413,29 +414,32 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
 
           {/* ── To ── */}
           <SectionLabel style={{ background: '#FFF3E0', border: '1px solid rgba(170,135,85,0.50)', color: '#9B6340' }}>To: 📮</SectionLabel>
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder="their@email.com"
-            onKeyDown={e => e.key === 'Enter' && handleSend()}
-            className="send-email-input"
-            style={{
-              width: '100%',
-              boxSizing: 'border-box',
-              padding: '5px 4px',
-              fontFamily: 'Caveat, cursive',
-              fontSize: 19,
-              color: '#5C3020',
-              background: 'transparent',
-              border: 'none',
-              borderBottom: '1.5px dashed rgba(190,140,110,0.45)',
-              outline: 'none',
-              letterSpacing: 0.3,
-              marginTop: 8,
-              marginBottom: 4,
-            }}
-          />
+          <div style={{ position: 'relative', marginTop: 8, marginBottom: 4 }}>
+            {!email && !emailFocused && <span className="email-cursor">|</span>}
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              onFocus={() => setEmailFocused(true)}
+              onBlur={() => setEmailFocused(false)}
+              placeholder={emailFocused ? 'their@email.com' : '  their@email.com'}
+              onKeyDown={e => e.key === 'Enter' && handleSend()}
+              className="send-email-input"
+              style={{
+                width: '100%',
+                boxSizing: 'border-box',
+                padding: '5px 4px',
+                fontFamily: 'Caveat, cursive',
+                fontSize: 19,
+                color: '#5C3020',
+                background: 'transparent',
+                border: 'none',
+                borderBottom: '1.5px dashed rgba(220,130,155,0.55)',
+                outline: 'none',
+                letterSpacing: 0.3,
+              }}
+            />
+          </div>
           {errorMsg && (
             <div style={{
               fontFamily: 'VT323, monospace',
