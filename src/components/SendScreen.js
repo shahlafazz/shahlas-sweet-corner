@@ -314,13 +314,13 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
               </div>
             </div>
             <BowDivider />
-            <div style={{ textAlign: 'center', paddingTop: 8, paddingBottom: 8 }}>
-              <div style={{ fontSize: 52, marginBottom: 12, animation: 'float 3s ease-in-out infinite', display: 'inline-block' }}>🎁</div>
-              <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', lineHeight: 2, marginBottom: 10 }}>
+            <div style={{ textAlign: 'center', padding: '10px 8px 12px' }}>
+              <div style={{ fontSize: 52, marginBottom: 14, animation: 'float 3s ease-in-out infinite', display: 'inline-block' }}>🎁</div>
+              <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', lineHeight: 2, marginBottom: 16 }}>
                 Gift Delivered!
               </div>
-              <p style={{ fontFamily: 'Caveat, cursive', fontSize: 22, color: '#8A5030', lineHeight: 1.6, marginBottom: 24 }}>
-                Your sweet parcel is on its way to {email}.<br />May it bring a big smile!
+              <p style={{ fontFamily: 'Caveat, cursive', fontSize: 20, color: '#8A5030', lineHeight: 1.6, marginBottom: 28 }}>
+                Your sweet parcel is on its way to <span style={{ fontWeight: 600 }}>{email}</span>.
               </p>
               <button
                 onClick={() => { playClick(); onBack(); }}
@@ -341,23 +341,22 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
                 ▶ Start Over
               </button>
 
-              <div style={{ marginTop: 20 }}>
-                <p style={{ fontFamily: 'Caveat, cursive', fontSize: 17, color: '#A07060', marginBottom: 10, fontStyle: 'italic' }}>
-                  Know someone who'd love this? 🌸
-                </p>
+              <div style={{ marginTop: 22 }}>
                 <button
                   onClick={handleShare}
                   style={{
                     fontFamily: 'Caveat, cursive',
                     fontSize: 18,
-                    background: 'rgba(255,240,245,0.85)',
-                    color: '#B05870',
-                    border: '1.5px solid rgba(220,140,165,0.55)',
+                    background: 'rgba(240,180,196,0.22)',
+                    color: '#C07888',
+                    border: '1.5px solid rgba(210,140,160,0.40)',
                     borderRadius: 24,
                     padding: '8px 24px',
                     cursor: 'pointer',
-                    boxShadow: '0 2px 8px rgba(220,140,165,0.18)',
                     transition: 'opacity 0.2s',
+                    textDecoration: copied ? 'none' : 'underline',
+                    textDecorationColor: 'rgba(195,130,148,0.40)',
+                    textUnderlineOffset: '3px',
                   }}
                 >
                   {copied ? '✓ Link copied!' : '🌸 Share the sweetness — send this to a friend'}

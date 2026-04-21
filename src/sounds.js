@@ -46,31 +46,27 @@ export function playSend() {
   play(880, 700, 0.12, 0.16);
 }
 
-/* Oven timer ding — two-tone metallic bell */
+/* Oven timer ding — single clean bell, long natural ring-out */
 export function playOvenDing() {
   try {
     const ac = getCtx();
     if (ac.state === 'suspended') ac.resume();
     const now = ac.currentTime;
 
-    const strike = (startTime) => {
-      [1109, 2218].forEach((freq, i) => {
-        const osc  = ac.createOscillator();
-        const gain = ac.createGain();
-        osc.connect(gain);
-        gain.connect(ac.destination);
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, startTime);
-        osc.frequency.exponentialRampToValueAtTime(freq * 0.92, startTime + 1.2);
-        const vol = i === 0 ? 0.28 : 0.10;
-        gain.gain.setValueAtTime(vol, startTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 1.4);
-        osc.start(startTime);
-        osc.stop(startTime + 1.5);
-      });
-    };
-
-    strike(now);
-    strike(now + 0.22);
+    [1047, 2094].forEach((freq, i) => {
+      const osc  = ac.createOscillator();
+      const gain = ac.createGain();
+      osc.connect(gain);
+      gain.connect(ac.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.97, now + 2.0);
+      const vol = i === 0 ? 0.30 : 0.08;
+      gain.gain.setValueAtTime(vol, now);
+      gain.gain.setValueAtTime(vol, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 2.2);
+      osc.start(now);
+      osc.stop(now + 2.3);
+    });
   } catch (_) {}
 }
