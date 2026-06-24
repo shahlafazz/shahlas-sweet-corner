@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import cafeExterior       from '../assets/cafe-exterior.jpeg';
 import cafeExteriorMobile from '../assets/opening4.jpeg';
-import cakeIcon            from '../assets/cake-icon.png';
+import cakeIcon            from '../assets/icon-3.png';
 import { playClick } from '../sounds';
 
 /* ─── Small bow ─────────────────────────────────────────────── */
@@ -109,11 +109,10 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
               {/* Title */}
               <h1 style={{
                 fontFamily: "'Grand Hotel', cursive",
-                fontSize: 'clamp(32px, 8vw, 46px)',
-                color: '#E890A8',
+                fontSize: 'clamp(38px, 9vw, 54px)',
+                color: '#D4789A',
                 lineHeight: 1.2,
                 margin: 0,
-                textShadow: '1px 1px 0 rgba(255,200,216,0.8), 2px 2px 0 rgba(200,80,110,0.15)',
                 letterSpacing: 1,
               }}>
                 Sweet Corner
