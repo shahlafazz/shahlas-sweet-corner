@@ -306,7 +306,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
             <WashiTapes />
             <CornerDecors />
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 2 }}>
+              <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 2 }}>
                 Shahla's Sweet Corner
               </div>
               <div style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 18, color: '#A07050', fontStyle: 'italic', marginTop: 2 }}>
@@ -316,7 +316,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
             <BowDivider />
             <div style={{ textAlign: 'center', padding: '10px 8px 12px' }}>
               <div style={{ fontSize: 52, marginBottom: 14, animation: 'float 3s ease-in-out infinite', display: 'inline-block' }}>🎁</div>
-              <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 8, color: '#7A3828', lineHeight: 2, marginBottom: 16 }}>
+              <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', lineHeight: 2, marginBottom: 16 }}>
                 Gift Delivered!
               </div>
               <p style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 20, color: '#8A5030', lineHeight: 1.6, marginBottom: 28 }}>
@@ -325,7 +325,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
               <button
                 onClick={() => { playClick(); onBack(); }}
                 style={{
-                  fontFamily: "'Pixelify Sans', monospace",
+                  fontFamily: "'Press Start 2P', monospace",
                   fontSize: 7,
                   background: 'linear-gradient(180deg, #F8CCD4 0%, #E87090 50%, #D05070 100%)',
                   color: '#FFF0F4',
@@ -345,7 +345,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
                 <button
                   onClick={handleShare}
                   style={{
-                    fontFamily: "'Pixelify Sans', monospace",
+                    fontFamily: "'Press Start 2P', monospace",
                     fontSize: 7,
                     background: 'rgba(240,180,196,0.22)',
                     color: '#C07888',
@@ -384,7 +384,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
 
           {/* ── Header ── */}
           <div style={{ textAlign: 'center', marginBottom: 2 }}>
-            <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 1.8 }}>
+            <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 1.8 }}>
               Shahla's Sweet Corner
             </div>
             <div style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 16, color: '#A07050', fontStyle: 'italic', marginTop: 1 }}>
@@ -498,7 +498,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
               onClick={() => { playSend(); handleSend(); }}
               disabled={status === 'sending'}
               style={{
-                fontFamily: "'Pixelify Sans', monospace",
+                fontFamily: "'Press Start 2P', monospace",
                 fontSize: 8,
                 background: status === 'sending'
                   ? 'linear-gradient(180deg, #E0B8C0, #B88090)'
@@ -530,7 +530,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           <button
             onClick={() => { playClick(); onBack(); }}
             style={{
-              fontFamily: "'Pixelify Sans', monospace",
+              fontFamily: "'Press Start 2P', monospace",
               fontSize: 6.5,
               background: 'rgba(120,80,55,0.10)',
               color: '#7A5035',

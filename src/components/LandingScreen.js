@@ -170,7 +170,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
 
               {/* Title */}
               <h1 style={{
-                fontFamily: "'Pixelify Sans', monospace",
+                fontFamily: "'Press Start 2P', monospace",
                 fontSize: 'clamp(11px, 3.2vw, 15px)',
                 color: '#7A2840',
                 lineHeight: 2.1,
@@ -204,7 +204,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
               {/* Who is this for? */}
               <div style={{ marginBottom: 22, width: '100%' }}>
                 <div style={{
-                  fontFamily: "'Pixelify Sans', monospace",
+                  fontFamily: "'Press Start 2P', monospace",
                   fontSize: 9,
                   color: '#C0708A',
                   letterSpacing: 1.5,
@@ -253,7 +253,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
               <button
                 onClick={() => { playClick(); onEnter(); }}
                 style={{
-                  fontFamily: "'Pixelify Sans', monospace",
+                  fontFamily: "'Press Start 2P', monospace",
                   fontSize: 8,
                   background: 'linear-gradient(180deg, #FFC8D8 0%, #F080A0 50%, #D05878 100%)',
                   color: '#FFF0F4',

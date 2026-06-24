@@ -76,7 +76,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
         <div style={{
           textAlign: 'center',
           marginBottom: 20,
-          fontFamily: "'Pixelify Sans', monospace",
+          fontFamily: "'Press Start 2P', monospace",
           fontSize: 9,
           color: '#FDF6E3',
           textShadow: '2px 2px 0 rgba(0,0,0,0.35), 1px 1px 0 rgba(0,0,0,0.2)',
@@ -115,7 +115,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
             <div style={{ padding: '12px 28px 0', textAlign: 'center' }}>
               <div style={{ display: 'inline-block', transform: 'rotate(-2.5deg)' }}>
                 <div style={{
-                  fontFamily: "'Pixelify Sans', monospace",
+                  fontFamily: "'Press Start 2P', monospace",
                   fontSize: 13,
                   color: '#3D1F0F',
                   border: '3px solid #3D1F0F',
@@ -243,7 +243,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
 
                   {/* Price */}
                   <div style={{
-                    fontFamily: "'Pixelify Sans', monospace",
+                    fontFamily: "'Press Start 2P', monospace",
                     fontSize: 6.5,
                     color: '#5C3D2E',
                     width: 55,
@@ -280,7 +280,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                     TOTAL
                   </div>
                   <div style={{
-                    fontFamily: "'Pixelify Sans', monospace",
+                    fontFamily: "'Press Start 2P', monospace",
                     fontSize: 10,
                     color: '#3D1F0F',
                     lineHeight: 1.8,
@@ -318,7 +318,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
           <button
             onClick={() => { playClick(); onNext(); }}
             style={{
-              fontFamily: "'Pixelify Sans', monospace",
+              fontFamily: "'Press Start 2P', monospace",
               fontSize: 9,
               background: 'linear-gradient(180deg, #FFC8D8 0%, #F080A0 50%, #D05878 100%)',
               color: '#FFF0F4',
@@ -339,7 +339,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
           <button
             onClick={() => { playClick(); onBack(); }}
             style={{
-              fontFamily: "'Pixelify Sans', monospace",
+              fontFamily: "'Press Start 2P', monospace",
               fontSize: 7,
               background: 'linear-gradient(180deg, #FFFAF4 0%, #F5EAD0 50%, #E8D5B5 100%)',
               color: '#5C3020',

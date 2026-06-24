@@ -51,7 +51,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           border: '1.5px solid rgba(255,200,220,0.38)',
           borderRadius: 22,
           padding: '8px 22px',
-          fontFamily: "'Pixelify Sans', monospace",
+          fontFamily: "'Press Start 2P', monospace",
           fontSize: 8,
           color: '#FFF0F4',
           letterSpacing: 1.2,
@@ -233,7 +233,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           <button
             onClick={() => { playClick(); onBack(); }}
             style={{
-              fontFamily: "'Pixelify Sans', monospace",
+              fontFamily: "'Press Start 2P', monospace",
               fontSize: 7,
               background: 'linear-gradient(180deg, #FFFAF4 0%, #F5EAD0 50%, #E8D5B5 100%)',
               color: '#5C3020',
@@ -256,7 +256,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           <button
             onClick={() => { playClick(); onNext(); }}
             style={{
-              fontFamily: "'Pixelify Sans', monospace",
+              fontFamily: "'Press Start 2P', monospace",
               fontSize: 8,
               background: 'linear-gradient(180deg, #FFC8D8 0%, #F080A0 50%, #D05878 100%)',
               color: '#FFF0F4',

@@ -123,7 +123,7 @@ export default function PayScreen({ onComplete }) {
         {phase === 2 && (
           <div style={{ textAlign: 'center' }}>
             <div style={{
-              fontFamily: "'Pixelify Sans', monospace",
+              fontFamily: "'Press Start 2P', monospace",
               fontSize: 'clamp(10px, 2.8vw, 14px)',
               color: '#FFF8E8',
               lineHeight: 2.4,

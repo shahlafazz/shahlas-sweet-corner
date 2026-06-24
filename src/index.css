@@ -1,14 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap');
 @font-face {
   font-family: 'Gamja Flower';
   src: url('./fonts/GamjaFlower-Regular.ttf') format('truetype');
   font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Pixelify Sans';
-  src: url('./fonts/PixelifySans-VariableFont_wght.ttf') format('truetype');
-  font-weight: 400 700;
   font-style: normal;
 }
 
@@ -103,7 +97,7 @@ html, body {
 
 /* ─── WOOD BUTTON ─────────────────────────────────────────────── */
 .wood-btn {
-  font-family: 'Pixelify Sans', monospace;
+  font-family: 'Press Start 2P', monospace;
   font-size: 9px;
   color: #FFF8E8;
   text-shadow: 1px 1px 0 var(--dark-brown), 2px 2px 0 var(--deep-brown);
@@ -169,7 +163,7 @@ html, body {
 
 /* ─── LEGACY pixel-btn kept for any missed spots ──────────────── */
 .pixel-btn {
-  font-family: 'Pixelify Sans', monospace;
+  font-family: 'Press Start 2P', monospace;
   font-size: 9px;
   background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood-mid) 45%, var(--wood-dark) 100%);
   color: #FFF8E8;
