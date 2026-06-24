@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import cafeExterior       from '../assets/cafe-exterior.jpeg';
 import cafeExteriorMobile from '../assets/opening4.jpeg';
+import cakeIcon            from '../assets/cake-icon.png';
 import { playClick } from '../sounds';
 
 /* ─── Large top bow ─────────────────────────────────────────── */
@@ -129,14 +130,12 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
           paddingTop: 42,
           background: 'linear-gradient(180deg, #F4B0C4 0%, #E890A8 50%, #F4B0C4 100%)',
           borderRadius: 28,
-          padding: '48px 10px 10px',
+          padding: '16px 10px 10px',
           boxShadow:
             '0 14px 48px rgba(0,0,0,0.26), 0 4px 12px rgba(0,0,0,0.16), ' +
             'inset 0 2px 0 rgba(255,220,232,0.6)',
           border: '3px solid rgba(220,120,148,0.45)',
         }}>
-          <TopBow />
-
           {/* Hearts at top corners of frame */}
           <Heart size={18} style={{ position: 'absolute', top: 12, left: 14, opacity: 0.75 }} />
           <Heart size={18} style={{ position: 'absolute', top: 12, right: 14, opacity: 0.75 }} />
@@ -170,24 +169,26 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
 
               {/* Title */}
               <h1 style={{
-                fontFamily: "'Press Start 2P', monospace",
-                fontSize: 'clamp(11px, 3.2vw, 15px)',
+                fontFamily: "'Grand Hotel', cursive",
+                fontSize: 'clamp(32px, 8vw, 46px)',
                 color: '#7A2840',
-                lineHeight: 2.1,
+                lineHeight: 1.2,
                 margin: 0,
                 textShadow: '1px 1px 0 rgba(255,200,216,0.8), 2px 2px 0 rgba(200,80,110,0.15)',
                 letterSpacing: 1,
               }}>
-                Shahla's<br />Sweet Corner
+                Sweet Corner
               </h1>
 
               {/* Floating cake icon */}
               <div style={{
-                fontSize: 46, margin: '14px 0 10px',
+                margin: '14px 0 10px',
                 display: 'inline-block',
                 animation: 'float 3s ease-in-out infinite',
                 filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.15))',
-              }}>🍰</div>
+              }}>
+                <img src={cakeIcon} alt="cake" style={{ width: 46, height: 46, objectFit: 'contain' }} />
+              </div>
 
               {/* Subtitle */}
               <p style={{
@@ -198,23 +199,11 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
                 fontStyle: 'italic',
                 lineHeight: 1.55,
               }}>
-                <span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginRight: 11 }}>♥︎</span>a sweet little gift, made with love<span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginLeft: 11 }}>♥︎</span>
+                <span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginRight: 11 }}>♥︎</span>a sweet gift, made with love for<span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginLeft: 11 }}>♥︎</span>
               </p>
 
               {/* Who is this for? */}
-              <div style={{ marginBottom: 22, width: '100%' }}>
-                <div style={{
-                  fontFamily: "'Press Start 2P', monospace",
-                  fontSize: 9,
-                  color: '#C0708A',
-                  letterSpacing: 1.5,
-                  lineHeight: 2,
-                  marginBottom: 10,
-                  textAlign: 'center',
-                  textTransform: 'uppercase',
-                }}>
-                  this is a gift for
-                </div>
+              <div style={{ marginBottom: 22, width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <input
                   type="text"
                   value={toName}
@@ -223,7 +212,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
                   maxLength={32}
                   className="recipient-input"
                   style={{
-                    width: '100%',
+                    width: '78%',
                     background: 'rgba(255,240,246,0.75)',
                     border: '2px solid rgba(210,140,165,0.45)',
                     borderRadius: 16,
@@ -307,7 +296,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
             textShadow: '0 1px 3px rgba(0,0,0,0.2)',
             letterSpacing: 0.5,
           }}>
-            ✦ Build a sweet order &amp; send it with love ✦
+            Build a sweet order &amp; send it with love
           </div>
         </div>
       </div>
