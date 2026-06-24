@@ -107,8 +107,8 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
               </div>
 
               {/* Cake icon */}
-              <div style={{ margin: '0 0 10px', display: 'inline-block' }}>
-                <img src={cakeIcon} alt="cake" style={{ width: 110, height: 110, objectFit: 'contain' }} />
+              <div style={{ margin: '0 0 4px', display: 'inline-block' }}>
+                <img src={cakeIcon} alt="cake" style={{ width: 150, height: 150, objectFit: 'contain' }} />
               </div>
 
               {/* Subtitle */}
@@ -116,9 +116,9 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
                 fontFamily: 'Gamja Flower, cursive',
                 fontSize: 22,
                 color: '#C8849A',
-                marginBottom: 20,
+                marginBottom: 16,
                 fontStyle: 'italic',
-                lineHeight: 1.55,
+                lineHeight: 1.4,
               }}>
                 <span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginRight: 11 }}>♥︎</span>a sweet gift, made with love for<span style={{ fontSize: 14, verticalAlign: 'middle', color: '#F0BEC8', fontStyle: 'normal', marginLeft: 11 }}>♥︎</span>
               </p>
@@ -164,12 +164,12 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
                 onClick={() => { playClick(); onEnter(); }}
                 style={{
                   fontFamily: "'Press Start 2P', monospace",
-                  fontSize: 8,
+                  fontSize: 6,
                   background: 'linear-gradient(180deg, #FFC8D8 0%, #F080A0 50%, #D05878 100%)',
                   color: '#FFF0F4',
                   border: '2.5px solid #B03058',
                   borderRadius: 28,
-                  padding: '13px 32px',
+                  padding: '10px 24px',
                   cursor: 'pointer',
                   boxShadow:
                     '0 5px 0 #980A38, 0 8px 20px rgba(180,40,70,0.25), ' +
