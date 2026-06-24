@@ -1,15 +1,4 @@
-@font-face {
-  font-family: 'Intel One Mono';
-  src: url('./fonts/IntelOneMono-VariableFont_wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Intel One Mono';
-  src: url('./fonts/IntelOneMono-Italic-VariableFont_wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: italic;
-}
+@import url('https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap');
 @font-face {
   font-family: 'Gamja Flower';
   src: url('./fonts/GamjaFlower-Regular.ttf') format('truetype');
@@ -47,7 +36,7 @@
 html, body {
   width: 100%;
   min-height: 100vh;
-  font-family: 'Intel One Mono', monospace;
+  font-family: 'VT323', monospace;
   background-color: var(--beige);
   color: var(--dark-brown);
   font-size: 18px;

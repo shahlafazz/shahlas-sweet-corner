@@ -66,7 +66,7 @@ function BakeryStamp() {
       pointerEvents: 'none',
     }}>
       <div style={{ fontSize: 20, lineHeight: 1 }}>🧁</div>
-      <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 8, color: '#7A3828', letterSpacing: 1, textAlign: 'center', lineHeight: 1.4 }}>SWEET</div>
+      <div style={{ fontFamily: 'VT323, monospace', fontSize: 8, color: '#7A3828', letterSpacing: 1, textAlign: 'center', lineHeight: 1.4 }}>SWEET</div>
     </div>
   );
 }
@@ -127,7 +127,7 @@ function SectionLabel({ children, style }) {
   return (
     <div style={{
       display: 'inline-block',
-      fontFamily: 'Intel One Mono, monospace',
+      fontFamily: 'VT323, monospace',
       fontSize: 16,
       color: '#B05870',
       letterSpacing: 1.5,
@@ -196,7 +196,7 @@ function ThumbnailGrid({ items }) {
             />
           </div>
           <div style={{
-            fontFamily: 'Intel One Mono, monospace',
+            fontFamily: 'VT323, monospace',
             fontSize: 13,
             color: '#5C3020',
             textAlign: 'center',
@@ -400,7 +400,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
             <button
               onClick={() => { playClick(); onAddMore(); }}
               style={{
-                fontFamily: 'Intel One Mono, monospace',
+                fontFamily: 'VT323, monospace',
                 fontSize: 17,
                 color: '#C07888',
                 background: 'rgba(240,180,196,0.22)',
@@ -479,7 +479,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           </div>
           {errorMsg && (
             <div style={{
-              fontFamily: 'Intel One Mono, monospace',
+              fontFamily: 'VT323, monospace',
               fontSize: 18,
               color: '#C0392B',
               marginTop: 10,

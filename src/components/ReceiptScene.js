@@ -130,7 +130,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                 </div>
               </div>
               <div style={{
-                fontFamily: 'Intel One Mono, monospace',
+                fontFamily: 'VT323, monospace',
                 fontSize: 16,
                 color: '#B08060',
                 letterSpacing: 3,
@@ -140,7 +140,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                 Shahla's Sweet Corner
               </div>
               <div style={{
-                fontFamily: 'Intel One Mono, monospace',
+                fontFamily: 'VT323, monospace',
                 fontSize: 13,
                 color: '#D4BCA0',
                 letterSpacing: 2,
@@ -162,13 +162,13 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
             }}>
               {/* spacer: bullet + thumb */}
               <div style={{ width: 58, flexShrink: 0 }} />
-              <div style={{ flex: 1, fontFamily: 'Intel One Mono, monospace', fontSize: 12, color: '#C8A97E', letterSpacing: 1.5 }}>
+              <div style={{ flex: 1, fontFamily: 'VT323, monospace', fontSize: 12, color: '#C8A97E', letterSpacing: 1.5 }}>
                 ITEM
               </div>
-              <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 12, color: '#C8A97E', width: 30, textAlign: 'center', letterSpacing: 1 }}>
+              <div style={{ fontFamily: 'VT323, monospace', fontSize: 12, color: '#C8A97E', width: 30, textAlign: 'center', letterSpacing: 1 }}>
                 QTY
               </div>
-              <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 12, color: '#C8A97E', width: 55, textAlign: 'right', letterSpacing: 1 }}>
+              <div style={{ fontFamily: 'VT323, monospace', fontSize: 12, color: '#C8A97E', width: 55, textAlign: 'right', letterSpacing: 1 }}>
                 PRICE
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                   {/* Name */}
                   <div style={{
                     flex: 1,
-                    fontFamily: 'Intel One Mono, monospace',
+                    fontFamily: 'VT323, monospace',
                     fontSize: 19,
                     color: '#3D1F0F',
                     lineHeight: 1.2,
@@ -231,7 +231,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
 
                   {/* Qty */}
                   <div style={{
-                    fontFamily: 'Intel One Mono, monospace',
+                    fontFamily: 'VT323, monospace',
                     fontSize: 16,
                     color: '#9B7050',
                     width: 30,
@@ -268,7 +268,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                 alignItems: 'baseline',
               }}>
                 <div style={{
-                  fontFamily: 'Intel One Mono, monospace',
+                  fontFamily: 'VT323, monospace',
                   fontSize: 16,
                   color: '#9B7050',
                   fontStyle: 'italic',
@@ -276,7 +276,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
                   {selectedItems.length} {selectedItems.length === 1 ? 'item' : 'items'}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 14 }}>
-                  <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 18, color: '#7A5030', letterSpacing: 1 }}>
+                  <div style={{ fontFamily: 'VT323, monospace', fontSize: 18, color: '#7A5030', letterSpacing: 1 }}>
                     TOTAL
                   </div>
                   <div style={{
@@ -294,7 +294,7 @@ export default function ReceiptScene({ selectedItems, onNext, onBack }) {
               <div style={{
                 textAlign: 'center',
                 marginTop: 12,
-                fontFamily: 'Intel One Mono, monospace',
+                fontFamily: 'VT323, monospace',
                 fontSize: 14,
                 color: '#C8A97E',
                 letterSpacing: 3,

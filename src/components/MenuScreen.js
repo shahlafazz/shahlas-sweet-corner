@@ -108,7 +108,7 @@ function MenuItem({ item, selected, locked, onToggle, imgSize = 76, compact = fa
 
       {/* Name */}
       <div style={{
-        fontFamily: 'Intel One Mono, monospace',
+        fontFamily: 'VT323, monospace',
         fontSize: compact ? 15 : 15,
         color: selected ? '#7A2840' : '#5C3D2E',
         lineHeight: 1.25,
@@ -503,7 +503,7 @@ function OrderReceipt({ selectedItems, onToggle }) {
             letterSpacing: 1, lineHeight: 1.8,
             opacity: 0.88,
           }}>YOUR ORDER</div>
-          <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 13, color: '#C8A97E', letterSpacing: 2, marginTop: 2 }}>
+          <div style={{ fontFamily: 'VT323, monospace', fontSize: 13, color: '#C8A97E', letterSpacing: 2, marginTop: 2 }}>
             Shahla's Sweet Corner
           </div>
         </div>
@@ -513,7 +513,7 @@ function OrderReceipt({ selectedItems, onToggle }) {
         {/* Items */}
         <div style={{ padding: '0 16px', minHeight: 100 }}>
           {selectedItems.length === 0 ? (
-            <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 16, color: '#C8A97E', textAlign: 'center', fontStyle: 'italic', padding: '14px 0', lineHeight: 1.5 }}>
+            <div style={{ fontFamily: 'VT323, monospace', fontSize: 16, color: '#C8A97E', textAlign: 'center', fontStyle: 'italic', padding: '14px 0', lineHeight: 1.5 }}>
               Nothing selected yet...<br />Pick your treats!
             </div>
           ) : (
@@ -526,7 +526,7 @@ function OrderReceipt({ selectedItems, onToggle }) {
                 <div style={{ width: 12, height: 12, border: '2px solid #C8965A', borderRadius: 3, background: '#FFF4E0', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, color: '#9B6B3A' }}>✓</div>
                 <img src={item.image} alt={item.name} style={{ width: 24, height: 24, objectFit: 'contain', flexShrink: 0, imageRendering: 'pixelated' }} draggable={false} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 15, color: '#3D1F0F', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
+                  <div style={{ fontFamily: 'VT323, monospace', fontSize: 15, color: '#3D1F0F', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
                   <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 5, color: '#9B6B4B' }}>${item.price.toFixed(2)}</div>
                 </div>
                 <div style={{ fontSize: 9, color: '#C8A97E', flexShrink: 0 }}>✕</div>
@@ -537,7 +537,7 @@ function OrderReceipt({ selectedItems, onToggle }) {
 
         <div style={{ margin: '7px 14px 0', borderTop: '1.5px dashed #D4BCA0' }} />
         <div style={{ padding: '5px 16px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 14, color: '#9B6B4B', fontStyle: 'italic' }}>
+          <div style={{ fontFamily: 'VT323, monospace', fontSize: 14, color: '#9B6B4B', fontStyle: 'italic' }}>
             {selectedItems.length} {selectedItems.length === 1 ? 'item' : 'items'}
           </div>
           {selectedItems.length > 0 && (
