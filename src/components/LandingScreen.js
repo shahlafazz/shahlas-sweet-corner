@@ -4,67 +4,6 @@ import cafeExteriorMobile from '../assets/opening4.jpeg';
 import cakeIcon            from '../assets/cake-icon.png';
 import { playClick } from '../sounds';
 
-/* ─── Large top bow ─────────────────────────────────────────── */
-function TopBow() {
-  return (
-    <div style={{
-      position: 'absolute', top: -48, left: '50%',
-      transform: 'translateX(-50%)',
-      zIndex: 10, width: 120, height: 70,
-      pointerEvents: 'none',
-    }}>
-      {/* left tail */}
-      <div style={{
-        position: 'absolute', left: '43%', bottom: 2,
-        width: 14, height: 24,
-        background: 'linear-gradient(180deg, #F09AB0, #C05878)',
-        transform: 'rotate(16deg)', borderRadius: '2px 2px 8px 8px',
-        border: '1.5px solid rgba(160,40,70,0.25)',
-        boxShadow: '1px 2px 4px rgba(0,0,0,0.12)',
-      }} />
-      {/* right tail */}
-      <div style={{
-        position: 'absolute', right: '43%', bottom: 2,
-        width: 14, height: 24,
-        background: 'linear-gradient(180deg, #F09AB0, #C05878)',
-        transform: 'rotate(-16deg)', borderRadius: '2px 2px 8px 8px',
-        border: '1.5px solid rgba(160,40,70,0.25)',
-        boxShadow: '1px 2px 4px rgba(0,0,0,0.12)',
-      }} />
-      {/* left loop */}
-      <div style={{
-        position: 'absolute', left: 2, top: 8,
-        width: 50, height: 40,
-        background: 'linear-gradient(140deg, #FFD4E0 0%, #F090A8 55%, #D86888 100%)',
-        borderRadius: '62% 18% 18% 62%',
-        transform: 'rotate(-24deg)',
-        border: '2px solid rgba(180,50,80,0.22)',
-        boxShadow: '2px 3px 8px rgba(0,0,0,0.16), inset 0 2px 0 rgba(255,255,255,0.35)',
-      }} />
-      {/* right loop */}
-      <div style={{
-        position: 'absolute', right: 2, top: 8,
-        width: 50, height: 40,
-        background: 'linear-gradient(220deg, #FFD4E0 0%, #F090A8 55%, #D86888 100%)',
-        borderRadius: '18% 62% 62% 18%',
-        transform: 'rotate(24deg)',
-        border: '2px solid rgba(180,50,80,0.22)',
-        boxShadow: '2px 3px 8px rgba(0,0,0,0.16), inset 0 2px 0 rgba(255,255,255,0.35)',
-      }} />
-      {/* knot */}
-      <div style={{
-        position: 'absolute', left: '50%', top: '48%',
-        transform: 'translate(-50%, -50%)',
-        width: 26, height: 26,
-        background: 'radial-gradient(circle at 38% 32%, #FFE0E8, #C04870)',
-        borderRadius: '50%', zIndex: 5,
-        border: '2.5px solid rgba(160,40,70,0.28)',
-        boxShadow: '0 3px 8px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,210,220,0.5)',
-      }} />
-    </div>
-  );
-}
-
 /* ─── Small bow ─────────────────────────────────────────────── */
 function SmallBow() {
   return (
