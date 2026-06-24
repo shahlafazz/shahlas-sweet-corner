@@ -69,7 +69,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
           paddingTop: 42,
           background: 'linear-gradient(180deg, #F4B0C4 0%, #E890A8 50%, #F4B0C4 100%)',
           borderRadius: 28,
-          padding: '16px 10px 10px',
+          padding: '28px 10px 20px',
           boxShadow:
             '0 14px 48px rgba(0,0,0,0.26), 0 4px 12px rgba(0,0,0,0.16), ' +
             'inset 0 2px 0 rgba(255,220,232,0.6)',
@@ -85,7 +85,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
           <div style={{
             background: '#FFF8F2',
             borderRadius: 20,
-            padding: '28px 24px 26px',
+            padding: '36px 24px 36px',
             boxShadow:
               'inset 0 2px 8px rgba(200,100,130,0.10), ' +
               'inset 0 0 0 2px rgba(240,170,196,0.35)',
@@ -110,7 +110,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
               <h1 style={{
                 fontFamily: "'Grand Hotel', cursive",
                 fontSize: 'clamp(32px, 8vw, 46px)',
-                color: '#7A2840',
+                color: '#E890A8',
                 lineHeight: 1.2,
                 margin: 0,
                 textShadow: '1px 1px 0 rgba(255,200,216,0.8), 2px 2px 0 rgba(200,80,110,0.15)',
@@ -119,14 +119,9 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
                 Sweet Corner
               </h1>
 
-              {/* Floating cake icon */}
-              <div style={{
-                margin: '14px 0 10px',
-                display: 'inline-block',
-                animation: 'float 3s ease-in-out infinite',
-                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.15))',
-              }}>
-                <img src={cakeIcon} alt="cake" style={{ width: 46, height: 46, objectFit: 'contain' }} />
+              {/* Cake icon */}
+              <div style={{ margin: '14px 0 10px', display: 'inline-block' }}>
+                <img src={cakeIcon} alt="cake" style={{ width: 72, height: 72, objectFit: 'contain' }} />
               </div>
 
               {/* Subtitle */}
