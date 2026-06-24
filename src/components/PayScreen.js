@@ -108,7 +108,7 @@ export default function PayScreen({ onComplete }) {
         {/* Phase 1: preparing */}
         {phase === 1 && (
           <div style={{
-            fontFamily: 'Caveat, cursive',
+            fontFamily: 'Gamja Flower, cursive',
             fontSize: 'clamp(22px, 5vw, 32px)',
             color: '#FFF8E8',
             textShadow: '0 2px 10px rgba(0,0,0,0.55)',
@@ -123,7 +123,7 @@ export default function PayScreen({ onComplete }) {
         {phase === 2 && (
           <div style={{ textAlign: 'center' }}>
             <div style={{
-              fontFamily: "'Press Start 2P', monospace",
+              fontFamily: "'Pixelify Sans', monospace",
               fontSize: 'clamp(10px, 2.8vw, 14px)',
               color: '#FFF8E8',
               lineHeight: 2.4,
@@ -133,7 +133,7 @@ export default function PayScreen({ onComplete }) {
               <TypedText text={mainText} delayStart={0.1} charDelay={0.055} />
             </div>
             <div style={{
-              fontFamily: 'Caveat, cursive',
+              fontFamily: 'Gamja Flower, cursive',
               fontSize: 'clamp(18px, 4vw, 26px)',
               color: 'rgba(255,245,210,0.9)',
               marginTop: 10,

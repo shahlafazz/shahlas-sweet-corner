@@ -51,7 +51,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           border: '1.5px solid rgba(255,200,220,0.38)',
           borderRadius: 22,
           padding: '8px 22px',
-          fontFamily: "'Press Start 2P', monospace",
+          fontFamily: "'Pixelify Sans', monospace",
           fontSize: 8,
           color: '#FFF0F4',
           letterSpacing: 1.2,
@@ -103,7 +103,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
             }}>
               <CardBow />
               <span style={{
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 20,
                 color: '#A04860',
                 fontWeight: 600,
@@ -115,7 +115,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
 
             {/* Dear line — top left */}
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
-              <span style={{ fontFamily: 'Caveat, cursive', fontSize: 21, color: '#3E1E0E', whiteSpace: 'nowrap' }}>
+              <span style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 21, color: '#3E1E0E', whiteSpace: 'nowrap' }}>
                 Dear
               </span>
               <input
@@ -128,7 +128,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
                   background: 'transparent',
                   border: 'none',
                   borderBottom: '1.5px dashed rgba(200,150,160,0.35)',
-                  fontFamily: 'Caveat, cursive',
+                  fontFamily: 'Gamja Flower, cursive',
                   fontSize: 21,
                   color: '#3E1E0E',
                   outline: 'none',
@@ -136,7 +136,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
                   caretColor: '#C04870',
                 }}
               />
-              <span style={{ fontFamily: 'Caveat, cursive', fontSize: 21, color: '#3E1E0E' }}>,</span>
+              <span style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 21, color: '#3E1E0E' }}>,</span>
             </div>
 
             {/* Textarea */}
@@ -153,7 +153,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
                 background: 'transparent',
                 border: 'none',
                 resize: 'none',
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 21,
                 color: '#3E1E0E',
                 lineHeight: '32px',
@@ -166,7 +166,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
 
             {/* Sincerely line — bottom right */}
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 10, justifyContent: 'flex-end' }}>
-              <span style={{ fontFamily: 'Caveat, cursive', fontSize: 21, color: '#3E1E0E', whiteSpace: 'nowrap' }}>
+              <span style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 21, color: '#3E1E0E', whiteSpace: 'nowrap' }}>
                 Sincerely,
               </span>
               <input
@@ -179,7 +179,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
                   background: 'transparent',
                   border: 'none',
                   borderBottom: '1.5px dashed rgba(200,150,160,0.35)',
-                  fontFamily: 'Caveat, cursive',
+                  fontFamily: 'Gamja Flower, cursive',
                   fontSize: 21,
                   color: '#3E1E0E',
                   outline: 'none',
@@ -199,7 +199,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
               paddingTop: 8,
             }}>
               <div style={{
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 15,
                 color: '#C8A0A8',
                 fontStyle: 'italic',
@@ -208,7 +208,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
                 {['♡', '♡', '♡'].slice(0, note.length > 0 ? Math.min(3, Math.ceil(note.length / 67)) : 1).join(' ')}
               </div>
               <div style={{
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 15,
                 color: remaining < 30 ? '#C03050' : 'rgba(160,100,90,0.6)',
                 letterSpacing: 0.3,
@@ -233,7 +233,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           <button
             onClick={() => { playClick(); onBack(); }}
             style={{
-              fontFamily: "'Press Start 2P', monospace",
+              fontFamily: "'Pixelify Sans', monospace",
               fontSize: 7,
               background: 'linear-gradient(180deg, #FFFAF4 0%, #F5EAD0 50%, #E8D5B5 100%)',
               color: '#5C3020',
@@ -256,7 +256,7 @@ export default function NoteScreen({ note, onNoteChange, toName, onToNameChange,
           <button
             onClick={() => { playClick(); onNext(); }}
             style={{
-              fontFamily: "'Press Start 2P', monospace",
+              fontFamily: "'Pixelify Sans', monospace",
               fontSize: 8,
               background: 'linear-gradient(180deg, #FFC8D8 0%, #F080A0 50%, #D05878 100%)',
               color: '#FFF0F4',

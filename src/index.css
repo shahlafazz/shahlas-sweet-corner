@@ -1,4 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Caveat:wght@400;600&display=swap');
+@font-face {
+  font-family: 'Intel One Mono';
+  src: url('./fonts/IntelOneMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Intel One Mono';
+  src: url('./fonts/IntelOneMono-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Gamja Flower';
+  src: url('./fonts/GamjaFlower-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('./fonts/PixelifySans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -24,7 +47,7 @@
 html, body {
   width: 100%;
   min-height: 100vh;
-  font-family: 'VT323', monospace;
+  font-family: 'Intel One Mono', monospace;
   background-color: var(--beige);
   color: var(--dark-brown);
   font-size: 18px;
@@ -91,7 +114,7 @@ html, body {
 
 /* ─── WOOD BUTTON ─────────────────────────────────────────────── */
 .wood-btn {
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Pixelify Sans', monospace;
   font-size: 9px;
   color: #FFF8E8;
   text-shadow: 1px 1px 0 var(--dark-brown), 2px 2px 0 var(--deep-brown);
@@ -157,7 +180,7 @@ html, body {
 
 /* ─── LEGACY pixel-btn kept for any missed spots ──────────────── */
 .pixel-btn {
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'Pixelify Sans', monospace;
   font-size: 9px;
   background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood-mid) 45%, var(--wood-dark) 100%);
   color: #FFF8E8;
@@ -195,7 +218,7 @@ html, body {
   top: 50%;
   transform: translateY(-60%);
   color: rgba(92,48,32,0.42);
-  font-family: 'Caveat', cursive;
+  font-family: 'Gamja Flower', cursive;
   font-size: 19px;
   pointer-events: none;
   animation: blink 1.05s step-end infinite;
@@ -203,10 +226,10 @@ html, body {
 }
 
 /* ─── RECIPIENT NAME INPUT ───────────────────────────────────── */
-.recipient-input::placeholder { color: rgba(176,104,128,0.28); font-family: 'Caveat', cursive; font-size: 22px; }
+.recipient-input::placeholder { color: rgba(176,104,128,0.28); font-family: 'Gamja Flower', cursive; font-size: 22px; }
 
 /* ─── NOTE TEXTAREA ──────────────────────────────────────────── */
-.note-textarea::placeholder { color: rgba(140,90,70,0.38); font-style: italic; font-family: 'Caveat', cursive; font-size: 20px; }
+.note-textarea::placeholder { color: rgba(140,90,70,0.38); font-style: italic; font-family: 'Gamja Flower', cursive; font-size: 20px; }
 
 /* ─── MOBILE SCALE ───────────────────────────────────────────── */
 @media (max-width: 639px) {

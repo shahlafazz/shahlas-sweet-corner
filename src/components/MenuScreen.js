@@ -108,7 +108,7 @@ function MenuItem({ item, selected, locked, onToggle, imgSize = 76, compact = fa
 
       {/* Name */}
       <div style={{
-        fontFamily: 'VT323, monospace',
+        fontFamily: 'Intel One Mono, monospace',
         fontSize: compact ? 15 : 15,
         color: selected ? '#7A2840' : '#5C3D2E',
         lineHeight: 1.25,
@@ -155,7 +155,7 @@ function PageArrow({ dir, onClick, disabled, remainingCount }) {
         <span style={{ fontFamily: 'monospace', fontSize: 12, lineHeight: 1, opacity: disabled ? 0.4 : 1 }}>←</span>
       )}
       <span style={{
-        fontFamily: "'Press Start 2P', monospace",
+        fontFamily: "'Pixelify Sans', monospace",
         fontSize: 8,
         lineHeight: 1,
         letterSpacing: 1,
@@ -281,7 +281,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
               }}>
                 <span style={{ fontSize: 14 }}>🍰</span>
                 <span style={{
-                  fontFamily: "'Press Start 2P', monospace",
+                  fontFamily: "'Pixelify Sans', monospace",
                   fontSize: 'clamp(6px, 1.6vw, 9px)',
                   color: '#A03050',
                   textShadow: '1px 1px 0 rgba(255,200,215,0.7)',
@@ -304,7 +304,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                     border: `2px solid ${isBoxFull ? 'rgba(160,80,10,0.4)' : 'rgba(180,40,70,0.4)'}`,
                     borderRadius: 20,
                     padding: '3px 10px',
-                    fontFamily: "'Press Start 2P', monospace",
+                    fontFamily: "'Pixelify Sans', monospace",
                     fontSize: 7,
                     boxShadow: '0 2px 5px rgba(0,0,0,0.18)',
                     display: 'flex', alignItems: 'center', gap: 5,
@@ -316,7 +316,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                 )}
 
                 <div style={{
-                  fontFamily: 'Caveat, cursive',
+                  fontFamily: 'Gamja Flower, cursive',
                   fontSize: 16,
                   color: isBoxFull ? '#A06010' : '#A06070',
                   fontStyle: 'italic',
@@ -401,7 +401,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
                 <button
                   onClick={() => { playClick(); onNext(); }}
                   style={{
-                    fontFamily: "'Press Start 2P', monospace",
+                    fontFamily: "'Pixelify Sans', monospace",
                     fontSize: 8,
                     background: 'linear-gradient(180deg, #FFC8D8 0%, #F080A0 50%, #D05878 100%)',
                     color: '#FFF0F4',
@@ -435,7 +435,7 @@ export default function MenuScreen({ selectedItems, onToggleItem, onNext, onBack
           <button
             onClick={() => { playClick(); onBack(); }}
             style={{
-              fontFamily: "'Press Start 2P', monospace",
+              fontFamily: "'Pixelify Sans', monospace",
               fontSize: 7,
               background: 'linear-gradient(180deg, #FFFAF4 0%, #F5EAD0 50%, #E8D5B5 100%)',
               color: '#5C3020',
@@ -494,7 +494,7 @@ function OrderReceipt({ selectedItems, onToggle }) {
         <div style={{ padding: '8px 18px 0', textAlign: 'center' }}>
           <div style={{
             display: 'inline-block',
-            fontFamily: "'Press Start 2P', monospace",
+            fontFamily: "'Pixelify Sans', monospace",
             fontSize: 8,
             color: '#5C3D2E',
             border: '2.5px solid #5C3D2E',
@@ -503,7 +503,7 @@ function OrderReceipt({ selectedItems, onToggle }) {
             letterSpacing: 1, lineHeight: 1.8,
             opacity: 0.88,
           }}>YOUR ORDER</div>
-          <div style={{ fontFamily: 'VT323, monospace', fontSize: 13, color: '#C8A97E', letterSpacing: 2, marginTop: 2 }}>
+          <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 13, color: '#C8A97E', letterSpacing: 2, marginTop: 2 }}>
             Shahla's Sweet Corner
           </div>
         </div>
@@ -513,7 +513,7 @@ function OrderReceipt({ selectedItems, onToggle }) {
         {/* Items */}
         <div style={{ padding: '0 16px', minHeight: 100 }}>
           {selectedItems.length === 0 ? (
-            <div style={{ fontFamily: 'VT323, monospace', fontSize: 16, color: '#C8A97E', textAlign: 'center', fontStyle: 'italic', padding: '14px 0', lineHeight: 1.5 }}>
+            <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 16, color: '#C8A97E', textAlign: 'center', fontStyle: 'italic', padding: '14px 0', lineHeight: 1.5 }}>
               Nothing selected yet...<br />Pick your treats!
             </div>
           ) : (
@@ -526,8 +526,8 @@ function OrderReceipt({ selectedItems, onToggle }) {
                 <div style={{ width: 12, height: 12, border: '2px solid #C8965A', borderRadius: 3, background: '#FFF4E0', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, color: '#9B6B3A' }}>✓</div>
                 <img src={item.image} alt={item.name} style={{ width: 24, height: 24, objectFit: 'contain', flexShrink: 0, imageRendering: 'pixelated' }} draggable={false} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontFamily: 'VT323, monospace', fontSize: 15, color: '#3D1F0F', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
-                  <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 5, color: '#9B6B4B' }}>${item.price.toFixed(2)}</div>
+                  <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 15, color: '#3D1F0F', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</div>
+                  <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 5, color: '#9B6B4B' }}>${item.price.toFixed(2)}</div>
                 </div>
                 <div style={{ fontSize: 9, color: '#C8A97E', flexShrink: 0 }}>✕</div>
               </div>
@@ -537,11 +537,11 @@ function OrderReceipt({ selectedItems, onToggle }) {
 
         <div style={{ margin: '7px 14px 0', borderTop: '1.5px dashed #D4BCA0' }} />
         <div style={{ padding: '5px 16px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <div style={{ fontFamily: 'VT323, monospace', fontSize: 14, color: '#9B6B4B', fontStyle: 'italic' }}>
+          <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 14, color: '#9B6B4B', fontStyle: 'italic' }}>
             {selectedItems.length} {selectedItems.length === 1 ? 'item' : 'items'}
           </div>
           {selectedItems.length > 0 && (
-            <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 6.5, color: '#5C3D2E' }}>
+            <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 6.5, color: '#5C3D2E' }}>
               ${selectedItems.reduce((s, i) => s + i.price, 0).toFixed(2)}
             </div>
           )}

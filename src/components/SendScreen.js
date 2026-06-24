@@ -66,7 +66,7 @@ function BakeryStamp() {
       pointerEvents: 'none',
     }}>
       <div style={{ fontSize: 20, lineHeight: 1 }}>🧁</div>
-      <div style={{ fontFamily: 'VT323, monospace', fontSize: 8, color: '#7A3828', letterSpacing: 1, textAlign: 'center', lineHeight: 1.4 }}>SWEET</div>
+      <div style={{ fontFamily: 'Intel One Mono, monospace', fontSize: 8, color: '#7A3828', letterSpacing: 1, textAlign: 'center', lineHeight: 1.4 }}>SWEET</div>
     </div>
   );
 }
@@ -127,7 +127,7 @@ function SectionLabel({ children, style }) {
   return (
     <div style={{
       display: 'inline-block',
-      fontFamily: 'VT323, monospace',
+      fontFamily: 'Intel One Mono, monospace',
       fontSize: 16,
       color: '#B05870',
       letterSpacing: 1.5,
@@ -196,7 +196,7 @@ function ThumbnailGrid({ items }) {
             />
           </div>
           <div style={{
-            fontFamily: 'VT323, monospace',
+            fontFamily: 'Intel One Mono, monospace',
             fontSize: 13,
             color: '#5C3020',
             textAlign: 'center',
@@ -306,26 +306,26 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
             <WashiTapes />
             <CornerDecors />
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 2 }}>
+              <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 2 }}>
                 Shahla's Sweet Corner
               </div>
-              <div style={{ fontFamily: 'Caveat, cursive', fontSize: 18, color: '#A07050', fontStyle: 'italic', marginTop: 2 }}>
+              <div style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 18, color: '#A07050', fontStyle: 'italic', marginTop: 2 }}>
                 a little gift, just for you 🌸
               </div>
             </div>
             <BowDivider />
             <div style={{ textAlign: 'center', padding: '10px 8px 12px' }}>
               <div style={{ fontSize: 52, marginBottom: 14, animation: 'float 3s ease-in-out infinite', display: 'inline-block' }}>🎁</div>
-              <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', lineHeight: 2, marginBottom: 16 }}>
+              <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 8, color: '#7A3828', lineHeight: 2, marginBottom: 16 }}>
                 Gift Delivered!
               </div>
-              <p style={{ fontFamily: 'Caveat, cursive', fontSize: 20, color: '#8A5030', lineHeight: 1.6, marginBottom: 28 }}>
+              <p style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 20, color: '#8A5030', lineHeight: 1.6, marginBottom: 28 }}>
                 Your sweet parcel is on its way to <span style={{ fontWeight: 600 }}>{email}</span>.
               </p>
               <button
                 onClick={() => { playClick(); onBack(); }}
                 style={{
-                  fontFamily: "'Press Start 2P', monospace",
+                  fontFamily: "'Pixelify Sans', monospace",
                   fontSize: 7,
                   background: 'linear-gradient(180deg, #F8CCD4 0%, #E87090 50%, #D05070 100%)',
                   color: '#FFF0F4',
@@ -345,7 +345,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
                 <button
                   onClick={handleShare}
                   style={{
-                    fontFamily: "'Press Start 2P', monospace",
+                    fontFamily: "'Pixelify Sans', monospace",
                     fontSize: 7,
                     background: 'rgba(240,180,196,0.22)',
                     color: '#C07888',
@@ -384,10 +384,10 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
 
           {/* ── Header ── */}
           <div style={{ textAlign: 'center', marginBottom: 2 }}>
-            <div style={{ fontFamily: "'Press Start 2P', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 1.8 }}>
+            <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: 8, color: '#7A3828', letterSpacing: 1, lineHeight: 1.8 }}>
               Shahla's Sweet Corner
             </div>
-            <div style={{ fontFamily: 'Caveat, cursive', fontSize: 16, color: '#A07050', fontStyle: 'italic', marginTop: 1 }}>
+            <div style={{ fontFamily: 'Gamja Flower, cursive', fontSize: 16, color: '#A07050', fontStyle: 'italic', marginTop: 1 }}>
               a little something sweet, just for you 🌸
             </div>
           </div>
@@ -400,7 +400,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
             <button
               onClick={() => { playClick(); onAddMore(); }}
               style={{
-                fontFamily: 'VT323, monospace',
+                fontFamily: 'Intel One Mono, monospace',
                 fontSize: 17,
                 color: '#C07888',
                 background: 'rgba(240,180,196,0.22)',
@@ -425,7 +425,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           <SectionPanel style={{ marginTop: 8 }}>
             {personalNote ? (
               <p style={{
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 18,
                 color: '#5C3020',
                 lineHeight: 1.5,
@@ -435,7 +435,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
               </p>
             ) : (
               <p style={{
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 17,
                 color: '#C4A090',
                 fontStyle: 'italic',
@@ -466,7 +466,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
                 width: '100%',
                 boxSizing: 'border-box',
                 padding: '5px 4px',
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 19,
                 color: '#5C3020',
                 background: 'transparent',
@@ -479,7 +479,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           </div>
           {errorMsg && (
             <div style={{
-              fontFamily: 'VT323, monospace',
+              fontFamily: 'Intel One Mono, monospace',
               fontSize: 18,
               color: '#C0392B',
               marginTop: 10,
@@ -498,7 +498,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
               onClick={() => { playSend(); handleSend(); }}
               disabled={status === 'sending'}
               style={{
-                fontFamily: "'Press Start 2P', monospace",
+                fontFamily: "'Pixelify Sans', monospace",
                 fontSize: 8,
                 background: status === 'sending'
                   ? 'linear-gradient(180deg, #E0B8C0, #B88090)'
@@ -530,7 +530,7 @@ export default function SendScreen({ selectedItems, personalNote, toName, fromNa
           <button
             onClick={() => { playClick(); onBack(); }}
             style={{
-              fontFamily: "'Press Start 2P', monospace",
+              fontFamily: "'Pixelify Sans', monospace",
               fontSize: 6.5,
               background: 'rgba(120,80,55,0.10)',
               color: '#7A5035',

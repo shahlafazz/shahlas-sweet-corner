@@ -170,7 +170,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
 
               {/* Title */}
               <h1 style={{
-                fontFamily: "'Press Start 2P', monospace",
+                fontFamily: "'Pixelify Sans', monospace",
                 fontSize: 'clamp(11px, 3.2vw, 15px)',
                 color: '#7A2840',
                 lineHeight: 2.1,
@@ -191,7 +191,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
 
               {/* Subtitle */}
               <p style={{
-                fontFamily: 'Caveat, cursive',
+                fontFamily: 'Gamja Flower, cursive',
                 fontSize: 22,
                 color: '#C8849A',
                 marginBottom: 20,
@@ -204,7 +204,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
               {/* Who is this for? */}
               <div style={{ marginBottom: 22, width: '100%' }}>
                 <div style={{
-                  fontFamily: "'Press Start 2P', monospace",
+                  fontFamily: "'Pixelify Sans', monospace",
                   fontSize: 9,
                   color: '#C0708A',
                   letterSpacing: 1.5,
@@ -228,7 +228,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
                     border: '2px solid rgba(210,140,165,0.45)',
                     borderRadius: 16,
                     padding: '10px 18px',
-                    fontFamily: 'Caveat, cursive',
+                    fontFamily: 'Gamja Flower, cursive',
                     fontSize: 22,
                     color: '#B06880',
                     outline: 'none',
@@ -253,7 +253,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
               <button
                 onClick={() => { playClick(); onEnter(); }}
                 style={{
-                  fontFamily: "'Press Start 2P', monospace",
+                  fontFamily: "'Pixelify Sans', monospace",
                   fontSize: 8,
                   background: 'linear-gradient(180deg, #FFC8D8 0%, #F080A0 50%, #D05878 100%)',
                   color: '#FFF0F4',
@@ -296,7 +296,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
         <div style={{ textAlign: 'center', marginTop: 16 }}>
           <div style={{
             display: 'inline-block',
-            fontFamily: 'Caveat, cursive',
+            fontFamily: 'Gamja Flower, cursive',
             fontSize: 17,
             color: '#FFF8F2',
             background: 'rgba(200,80,110,0.55)',
