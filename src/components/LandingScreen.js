@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import cafeExterior       from '../assets/cafe-exterior.jpeg';
 import cafeExteriorMobile from '../assets/opening4.jpeg';
-import cakeIcon            from '../assets/icon-3.png';
+import cakeIcon            from '../assets/icon-4.png';
 import { playClick } from '../sounds';
 
 /* ─── Small bow ─────────────────────────────────────────────── */
@@ -85,7 +85,7 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
           <div style={{
             background: '#FFF8F2',
             borderRadius: 20,
-            padding: '36px 24px 36px',
+            padding: '28px 24px 28px',
             boxShadow:
               'inset 0 2px 8px rgba(200,100,130,0.10), ' +
               'inset 0 0 0 2px rgba(240,170,196,0.35)',
@@ -99,28 +99,16 @@ export default function LandingScreen({ onEnter, toName, onToNameChange }) {
             <Sparkle size={8}  delay={0.4} style={{ position: 'absolute', bottom: 14, right: 18 }} />
 
             <div style={{ textAlign: 'center', position: 'relative' }}>
-              {/* Tiny hearts row above title */}
-              <div style={{ marginBottom: 8, display: 'flex', justifyContent: 'center', gap: 6 }}>
+              {/* Tiny hearts row */}
+              <div style={{ marginBottom: 12, display: 'flex', justifyContent: 'center', gap: 6 }}>
                 {['♡', '♥', '♡'].map((h, i) => (
                   <span key={i} style={{ fontSize: i === 1 ? 14 : 10, color: '#F0A0B8', opacity: i === 1 ? 0.9 : 0.55 }}>{h}</span>
                 ))}
               </div>
 
-              {/* Title */}
-              <h1 style={{
-                fontFamily: "'Grand Hotel', cursive",
-                fontSize: 'clamp(38px, 9vw, 54px)',
-                color: '#D4789A',
-                lineHeight: 1.2,
-                margin: 0,
-                letterSpacing: 1,
-              }}>
-                Sweet Corner
-              </h1>
-
               {/* Cake icon */}
-              <div style={{ margin: '14px 0 10px', display: 'inline-block' }}>
-                <img src={cakeIcon} alt="cake" style={{ width: 72, height: 72, objectFit: 'contain' }} />
+              <div style={{ margin: '0 0 10px', display: 'inline-block' }}>
+                <img src={cakeIcon} alt="cake" style={{ width: 110, height: 110, objectFit: 'contain' }} />
               </div>
 
               {/* Subtitle */}
